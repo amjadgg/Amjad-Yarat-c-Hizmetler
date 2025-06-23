@@ -1,1214 +1,4 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Amjad Yaratıcı Hizmetler</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    
-    body {
-      font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #f8faff 0%, #f0f5ff 100%);
-      color: #333;
-      line-height: 1.6;
-      position: relative;
-      padding-bottom: 100px;
-    }
-    
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-    
-    header {
-      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-      color: white;
-      padding: 50px 20px;
-      text-align: center;
-      box-shadow: 0 4px 30px rgba(0,0,0,0.15);
-      position: relative;
-      overflow: hidden;
-      clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-      margin-bottom: 50px;
-    }
-    
-    header::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon fill="rgba(255,255,255,0.05)" points="0,100 100,0 100,100"/></svg>');
-      background-size: cover;
-    }
-    
-    .header-content {
-      position: relative;
-      max-width: 900px;
-      margin: 0 auto;
-    }
-    
-    h1 {
-      font-size: 3rem;
-      margin-bottom: 10px;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 15px;
-    }
-    
-    .tagline {
-      font-size: 1.4rem;
-      opacity: 0.9;
-      margin-bottom: 20px;
-      font-weight: 300;
-    }
-    
-    .highlight {
-      background: rgba(255, 255, 255, 0.2);
-      padding: 8px 20px;
-      border-radius: 30px;
-      display: inline-block;
-      margin-top: 20px;
-      font-weight: 500;
-      backdrop-filter: blur(5px);
-      border: 1px solid rgba(255,255,255,0.1);
-    }
-    
-    .container {
-      max-width: 1200px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-      margin-top: 40px;
-    }
-    
-    .category {
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
-      padding: 35px;
-      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-      position: relative;
-      overflow: hidden;
-      border: none;
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    
-    .category:hover {
-      transform: translateY(-10px) !important;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-    }
-    
-    .category-icon {
-      font-size: 2.8rem;
-      color: #6a11cb;
-      margin-bottom: 25px;
-      text-align: center;
-      background: linear-gradient(135deg, #6a11cb, #2575fc);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      width: 80px;
-      height: 80px;
-      margin: 0 auto 25px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background-color: rgba(106, 17, 203, 0.1);
-    }
-    
-    .category h2 {
-      color: #2575fc;
-      text-align: center;
-      margin-bottom: 25px;
-      font-size: 1.9rem;
-      position: relative;
-      padding-bottom: 15px;
-      font-weight: 600;
-    }
-    
-    .category h2::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 60px;
-      height: 4px;
-      background: linear-gradient(90deg, #6a11cb, #2575fc);
-      border-radius: 3px;
-    }
-    
-    .services-list {
-      list-style: none;
-    }
-    
-    .service-item {
-      padding: 18px 0;
-      border-bottom: 1px solid rgba(0,0,0,0.05);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    
-    .service-item:hover {
-      background-color: rgba(106, 17, 203, 0.03);
-      transform: translateX(5px);
-    }
-    
-    .service-item:last-child {
-      border-bottom: none;
-    }
-    
-    .service-name {
-      font-weight: 500;
-      flex: 1;
-      color: #444;
-    }
-    
-    .service-price {
-      background: linear-gradient(135deg, #6a11cb, #2575fc);
-      color: white;
-      padding: 8px 18px;
-      border-radius: 20px;
-      font-weight: 600;
-      min-width: 120px;
-      text-align: center;
-      box-shadow: 0 4px 12px rgba(106, 17, 203, 0.2);
-      font-size: 0.95rem;
-    }
-    
-    .guarantee {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin: 50px 0;
-      flex-wrap: wrap;
-    }
-    
-    .guarantee-item {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      background: white;
-      padding: 18px 30px;
-      border-radius: 12px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-      transition: all 0.3s ease;
-      border: 1px solid rgba(0,0,0,0.03);
-    }
-    
-    .guarantee-item:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-    }
-    
-    .guarantee-item i {
-      color: #2575fc;
-      font-size: 1.6rem;
-    }
-    
-    .guarantee-item span {
-      font-weight: 500;
-    }
-    
-    footer {
-      background: linear-gradient(135deg, #8aedff, #8aedff);
-      color: #080808;
-      text-align: center;
-      padding: 40px 20px;
-      margin-top: 80px;
-      clip-path: polygon(0 20%, 100% 0, 100% 100%, 0% 100%);
-      padding-top: 60px;
-    }
-    
-    footer h3 {
-      font-size: 1.8rem;
-      margin-bottom: 15px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
-    
-    .contact-info {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      margin-top: 25px;
-      flex-wrap: wrap;
-    }
-    
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 10px 20px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 30px;
-      transition: all 0.3s ease;
-    }
-    
-    .contact-item:hover {
-      background: rgba(255,255,255,0.2);
-      transform: translateY(-3px);
-    }
-    
-    .contact-item i {
-      color: #3498db;
-      font-size: 1.2rem;
-    }
-    
-    /* Hesaplama Aracı Stilleri */
-    .calculator-btn {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: linear-gradient(135deg, #6a11cb, #2575fc);
-      color: white;
-      border: none;
-      width: 70px;
-      height: 70px;
-      border-radius: 50%;
-      box-shadow: 0 8px 25px rgba(106, 17, 203, 0.4);
-      cursor: pointer;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      transition: all 0.3s ease;
-      animation: pulse 2s infinite;
-    }
-    
-    @keyframes pulse {
-      0% { transform: scale(1); box-shadow: 0 8px 25px rgba(106, 17, 203, 0.4); }
-      50% { transform: scale(1.1); box-shadow: 0 12px 30px rgba(106, 17, 203, 0.5); }
-      100% { transform: scale(1); box-shadow: 0 8px 25px rgba(106, 17, 203, 0.4); }
-    }
-    
-    .calculator-btn:hover {
-      transform: scale(1.1) rotate(10deg);
-      box-shadow: 0 12px 30px rgba(106, 17, 203, 0.5);
-      animation: none;
-    }
-    
-    .calculator-container {
-      position: fixed;
-      bottom: 120px;
-      right: 30px;
-      width: 380px;
-      background: white;
-      border-radius: 20px;
-      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-      z-index: 1000;
-      padding: 25px;
-      transform: translateY(20px);
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    
-    .calculator-container.active {
-      transform: translateY(0);
-      opacity: 1;
-      visibility: visible;
-    }
-    
-    .calculator-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 20px;
-      padding-bottom: 15px;
-      border-bottom: 2px solid #f0f0f0;
-    }
-    
-    .calculator-header h3 {
-      color: #2575fc;
-      font-size: 1.5rem;
-      font-weight: 600;
-    }
-    
-    .close-calculator {
-      background: #f0f0f0;
-      border: none;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 1.2rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      color: #666;
-    }
-    
-    .close-calculator:hover {
-      background: #e0e0e0;
-      transform: rotate(90deg);
-      color: #333;
-    }
-    
-    .calculator-form {
-      margin-bottom: 20px;
-      max-height: 300px;
-      overflow-y: auto;
-      padding-right: 10px;
-    }
-    
-    .calculator-form::-webkit-scrollbar {
-      width: 6px;
-    }
-    
-    .calculator-form::-webkit-scrollbar-thumb {
-      background: #6a11cb;
-      border-radius: 3px;
-    }
-    
-    .form-group {
-      margin-bottom: 15px;
-      padding-bottom: 15px;
-      border-bottom: 1px solid #f0f0f0;
-    }
-    
-    .form-group:last-child {
-      border-bottom: none;
-      margin-bottom: 0;
-      padding-bottom: 0;
-    }
-    
-    .form-group label {
-      display: block;
-      margin-bottom: 8px;
-      font-weight: 600;
-      color: #444;
-      font-size: 0.95rem;
-    }
-    
-    .service-select {
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #e0e0e0;
-      border-radius: 10px;
-      background: #f9f9f9;
-      font-size: 1rem;
-      margin-bottom: 10px;
-      transition: all 0.3s ease;
-    }
-    
-    .service-select:focus {
-      border-color: #6a11cb;
-      box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.1);
-      outline: none;
-    }
-    
-    .quantity-control {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    .quantity-btn {
-      background: #6a11cb;
-      color: white;
-      border: none;
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      font-size: 1.2rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-    }
-    
-    .quantity-btn:hover {
-      background: #2575fc;
-      transform: scale(1.1);
-    }
-    
-    .quantity-input {
-      width: 60px;
-      text-align: center;
-      padding: 8px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      font-size: 1rem;
-      font-weight: 600;
-    }
-    
-    .add-service-btn {
-      background: #2575fc;
-      color: white;
-      border: none;
-      padding: 10px 18px;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 0.95rem;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 15px;
-      transition: all 0.3s ease;
-      font-weight: 500;
-    }
-    
-    .add-service-btn:hover {
-      background: #6a11cb;
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(37, 117, 252, 0.3);
-    }
-    
-    .remove-service-btn {
-      background: #ff6b6b;
-      color: white;
-      border: none;
-      padding: 8px 15px;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 0.85rem;
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      margin-top: 12px;
-      transition: all 0.3s ease;
-      font-weight: 500;
-    }
-    
-    .remove-service-btn:hover {
-      background: #ff5252;
-      transform: translateY(-2px);
-      box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
-    }
-    
-    .calculator-summary {
-      background: #f8f9ff;
-      border-radius: 12px;
-      padding: 20px;
-      margin-bottom: 20px;
-    }
-    
-    .summary-item {
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 10px;
-      font-size: 1rem;
-    }
-    
-    .summary-item.total {
-      font-weight: 600;
-      font-size: 1.2rem;
-      margin-top: 15px;
-      padding-top: 15px;
-      border-top: 1px dashed #ccc;
-    }
-    
-    .first-order-discount {
-      background: linear-gradient(135deg, #fff9c4 0%, #ffecb3 100%);
-      border: 1px solid #ffd54f;
-      border-radius: 12px;
-      padding: 15px;
-      margin-bottom: 20px;
-      font-size: 0.95rem;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
-    
-    .first-order-discount i {
-      color: #f57c00;
-      font-size: 1.4rem;
-    }
-    
-    .calculate-btn {
-      background: linear-gradient(135deg, #6a11cb, #2575fc);
-      color: white;
-      border: none;
-      padding: 14px 20px;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 1.05rem;
-      font-weight: 600;
-      width: 100%;
-      box-shadow: 0 5px 15px rgba(106, 17, 203, 0.3);
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    
-    .calculate-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(106, 17, 203, 0.4);
-    }
-    
-    .invoice-btn {
-      background: linear-gradient(135deg, #4CAF50, #2E7D32);
-      color: white;
-      border: none;
-      padding: 14px 20px;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 1.05rem;
-      font-weight: 600;
-      width: 100%;
-      box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
-      transition: all 0.3s ease;
-      margin-top: 12px;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    
-    .whatsapp-btn {
-      background: linear-gradient(135deg, #25D366, #128C7E);
-      color: white;
-      border: none;
-      padding: 14px 20px;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 1.05rem;
-      font-weight: 600;
-      width: 100%;
-      box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
-      transition: all 0.3s ease;
-      margin-top: 12px;
-      display: none;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-    }
-    
-    .invoice-btn:hover, .whatsapp-btn:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
-    }
-    
-    .service-added {
-      animation: highlight 1s;
-    }
-    
-    @keyframes highlight {
-      0% { background-color: rgba(106, 17, 203, 0.1); }
-      100% { background-color: transparent; }
-    }
-    
-    /* Floating WhatsApp Button */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 110px;
-      right: 30px;
-      background: linear-gradient(135deg, #25D366, #128C7E);
-      color: white;
-      border: none;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
-      cursor: pointer;
-      z-index: 1000;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.8rem;
-      transition: all 0.3s ease;
-      animation: pulse-whatsapp 2s infinite;
-    }
-    
-    @keyframes pulse-whatsapp {
-      0% { transform: scale(1); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); }
-      50% { transform: scale(1.1); box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5); }
-      100% { transform: scale(1); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); }
-    }
-    
-    .whatsapp-float:hover {
-      transform: scale(1.1);
-      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5);
-      animation: none;
-    }
-    
-    @media (max-width: 768px) {
-      .services-grid {
-        grid-template-columns: 1fr;
-      }
-      
-      h1 {
-        font-size: 2.2rem;
-      }
-      
-      .tagline {
-        font-size: 1.1rem;
-      }
-      
-      .service-item {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      
-      .service-price {
-        margin-top: 10px;
-        align-self: flex-end;
-      }
-      
-      .calculator-container {
-        width: 90%;
-        right: 5%;
-        left: 5%;
-      }
-      
-      .calculator-btn, .whatsapp-float {
-        bottom: 20px;
-        right: 20px;
-        width: 60px;
-        height: 60px;
-        font-size: 1.5rem;
-      }
-      
-      .whatsapp-float {
-        bottom: 90px;
-      }
-      
-      header {
-        padding: 40px 20px;
-        clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
-      }
-      
-      footer {
-        clip-path: polygon(0 10%, 100% 0, 100% 100%, 0% 100%);
-      }
-    }
-    
-    @media (max-width: 480px) {
-      h1 {
-        font-size: 1.8rem;
-      }
-      
-      .tagline {
-        font-size: 1rem;
-      }
-      
-      .highlight {
-        font-size: 0.9rem;
-        padding: 6px 15px;
-      }
-      
-      .category {
-        padding: 25px;
-      }
-      
-      .guarantee-item {
-        padding: 15px 20px;
-        font-size: 0.9rem;
-      }
-      
-      .contact-item {
-        padding: 8px 15px;
-        font-size: 0.9rem;
-      }
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="header-content">
-      <h1><i class="fas fa-palette"></i> Amjad Yaratıcı Hizmetler</h1>
-      <p class="tagline">Profesyonel tasarım çözümleri ile markanızı öne çıkarın</p>
-      <div class="highlight">20+ mutlu müşteri | %100 memnuniyet garantili</div>
-    </div>
-  </header>
 
-  <div class="container">
-    <div class="guarantee">
-      <div class="guarantee-item">
-        <i class="fas fa-bolt"></i>
-        <span>Hızlı Teslimat</span>
-      </div>
-      <div class="guarantee-item">
-        <i class="fas fa-redo"></i>
-        <span>Benzeri yapılır</span>
-      </div>
-      <div class="guarantee-item">
-        <i class="fas fa-shield-alt"></i>
-        <span>Güvenli Ödeme</span>
-      </div>
-      <div class="guarantee-item">
-        <i class="fas fa-headset"></i>
-        <span>7/24 Destek</span>
-      </div>
-    </div>
-
-    <div class="services-grid">
-      <div class="category">
-        <div class="category-icon">
-          <i class="fas fa-pencil-ruler"></i>
-        </div>
-        <h2>Logo Tasarımı</h2>
-        <ul class="services-list">
-          <li class="service-item" data-name="Basit Logo (Temel)" data-price="2240">
-            <span class="service-name">Basit Logo (Temel)</span>
-            <span class="service-price">2,240 TL</span>
-          </li>
-          <li class="service-item" data-name="Profesyonel Logo (3 seçenek)" data-price="3200">
-            <span class="service-name">Profesyonel Logo (3 seçenek)</span>
-            <span class="service-price">3,200 TL</span>
-          </li>
-          <li class="service-item" data-name="Kurumsal Kimlik (Logo + renkler + fontlar)" data-price="4800">
-            <span class="service-name">Kurumsal Kimlik (Logo + renkler + fontlar)</span>
-            <span class="service-price">4,800 TL</span>
-          </li>
-          <li class="service-item" data-name="Mevcut logoda değişiklik" data-price="1600">
-            <span class="service-name">Mevcut logoda değişiklik</span>
-            <span class="service-price">1,600 TL</span>
-          </li>
-        </ul>
-      </div>
-
-      <div class="category">
-        <div class="category-icon">
-          <i class="fas fa-box-open"></i>
-        </div>
-        <h2>Ambalaj Tasarımı</h2>
-        <ul class="services-list">
-          <li class="service-item" data-name="Tek yüzey ambalaj tasarımı (1-2 yüz)" data-price="1600">
-            <span class="service-name">Tek yüzey ambalaj tasarımı (1-2 yüz)</span>
-            <span class="service-price">1,600 TL</span>
-          </li>
-          <li class="service-item" data-name="Çok yüzeyli ambalaj tasarımı (1-5 yüz)" data-price="2240">
-            <span class="service-name">Çok yüzeyli ambalaj tasarımı (1-5 yüz)</span>
-            <span class="service-price">2,240 TL</span>
-          </li>
-          <li class="service-item" data-name="Ürün etiketi tasarımı" data-price="640">
-            <span class="service-name">Ürün etiketi tasarımı</span>
-            <span class="service-price">640 TL</span>
-          </li>
-          <li class="service-item" data-name="Premium hediye kutusu tasarımı" data-price="4800">
-            <span class="service-name">Premium hediye kutusu tasarımı</span>
-            <span class="service-price">4,800 TL</span>
-          </li>
-        </ul>
-      </div>
-
-      <div class="category">
-        <div class="category-icon">
-          <i class="fas fa-film"></i>
-        </div>
-        <h2>Video Kurgu & Montaj</h2>
-        <ul class="services-list">
-          <li class="service-item" data-name="Temel video montaj (saatlik)" data-price="3200">
-            <span class="service-name">Temel video montaj (saatlik)</span>
-            <span class="service-price">3,200 TL</span>
-          </li>
-          <li class="service-item" data-name="After Effects animasyon (saatlik)" data-price="6400">
-            <span class="service-name">After Effects animasyon (saatlik)</span>
-            <span class="service-price">6,400 TL</span>
-          </li>
-          <li class="service-item" data-name="Reklam videosu (30-60 saniye)" data-price="4800">
-            <span class="service-name">Reklam videosu (30-60 saniye)</span>
-            <span class="service-price">4,800 TL</span>
-          </li>
-          <li class="service-item" data-name="Kapsamlı tanıtım videosu (2-3 dakika)" data-price="11200">
-            <span class="service-name">Kapsamlı tanıtım videosu (2-3 dakika)</span>
-            <span class="service-price">11,200 TL</span>
-          </li>
-          <li class="service-item" data-name="AI ile fotoğraftan video oluşturma (başına)" data-price="800">
-            <span class="service-name">AI ile fotoğraftan video oluşturma (başına)</span>
-            <span class="service-price">800 TL</span>
-          </li>
-        </ul>
-      </div>
-
-      <div class="category">
-        <div class="category-icon">
-          <i class="fas fa-ad"></i>
-        </div>
-        <h2>Grafik Tasarım & Pazarlama</h2>
-        <ul class="services-list">
-          <li class="service-item" data-name="Tek reklam afişi" data-price="160">
-            <span class="service-name">Tek reklam afişi</span>
-            <span class="service-price">160 TL</span>
-          </li>
-          <li class="service-item" data-name="5'li afiş paketi" data-price="800">
-            <span class="service-name">5'li afiş paketi</span>
-            <span class="service-price">800 TL</span>
-          </li>
-          <li class="service-item" data-name="20'li afiş paketi" data-price="1120">
-            <span class="service-name">20'li afiş paketi</span>
-            <span class="service-price">1,120 TL</span>
-          </li>
-          <li class="service-item" data-name="Kartvizit tasarımı" data-price="800">
-            <span class="service-name">Kartvizit tasarımı</span>
-            <span class="service-price">800 TL</span>
-          </li>
-          <li class="service-item" data-name="Broşür tasarımı (tek yüz)" data-price="1600">
-            <span class="service-name">Broşür tasarımı (tek yüz)</span>
-            <span class="service-price">1,600 TL</span>
-          </li>
-        </ul>
-      </div>
-      
-      <div class="category">
-        <div class="category-icon">
-          <i class="fas fa-camera-retro"></i>
-        </div>
-        <h2>Fotoğraf Düzenleme</h2>
-        <ul class="services-list">
-          <li class="service-item" data-name="Temel renk düzeltme (fotoğraf başı)" data-price="160">
-            <span class="service-name">Temel renk düzeltme (fotoğraf başı)</span>
-            <span class="service-price">160 TL</span>
-          </li>
-          <li class="service-item" data-name="Arka plan değiştirme (fotoğraf başı)" data-price="320">
-            <span class="service-name">Arka plan değiştirme (fotoğraf başı)</span>
-            <span class="service-price">320 TL</span>
-          </li>
-          <li class="service-item" data-name="Portre düzeltme (cilt, göz, vs.)" data-price="480">
-            <span class="service-name">Portre düzeltme (cilt, göz, vs.)</span>
-            <span class="service-price">480 TL</span>
-          </li>
-          <li class="service-item" data-name="Ürün fotoğrafı düzenleme" data-price="224">
-            <span class="service-name">Ürün fotoğrafı düzenleme</span>
-            <span class="service-price">224 TL</span>
-          </li>
-          <li class="service-item" data-name="10 fotoğraflık paket" data-price="2240">
-            <span class="service-name">10 fotoğraflık paket</span>
-            <span class="service-price">2,240 TL</span>
-          </li>
-          <li class="service-item" data-name="20 fotoğraflık paket" data-price="3840">
-            <span class="service-name">20 fotoğraflık paket</span>
-            <span class="service-price">3,840 TL</span>
-          </li>
-        </ul>
-      </div>
-      
-      <div class="category">
-        <div class="category-icon">
-          <i class="fas fa-layer-group"></i>
-        </div>
-        <h2>Diğer Hizmetler</h2>
-        <ul class="services-list">
-          <li class="service-item" data-name="Web site arayüz tasarımı" data-price="6400">
-            <span class="service-name">Web site arayüz tasarımı</span>
-            <span class="service-price">6,400 TL</span>
-          </li>
-          <li class="service-item" data-name="Sosyal medya kapak fotoğrafı" data-price="320">
-            <span class="service-name">Sosyal medya kapak fotoğrafı</span>
-            <span class="service-price">320 TL</span>
-          </li>
-          <li class="service-item" data-name="Mobil uygulama arayüzü" data-price="9600">
-            <span class="service-name">Mobil uygulama arayüzü</span>
-            <span class="service-price">9,600 TL</span>
-          </li>
-          <li class="service-item" data-name="Karikatür çizimi" data-price="800">
-            <span class="service-name">Karikatür çizimi</span>
-            <span class="service-price">800 TL</span>
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-
-  <footer>
-    <h3><i class="fas fa-palette"></i> Amjad Yaratıcı Hizmetler</h3>
-    <p>Profesyonel çözümler için bize ulaşın</p>
-    <div class="contact-info">
-      <a href="tel:+905385818771" class="contact-item">
-        <i class="fas fa-phone"></i>
-        <span>+90 538 581 87 71</span>
-      </a>
-      <a href="mailto:amjadhammad004@gmail.com" class="contact-item">
-        <i class="fas fa-envelope"></i>
-        <span>amjadhammad004@gmail.com</span>
-      </a>
-      <a href="https://instagram.com/amjadgg" target="_blank" class="contact-item">
-        <i class="fab fa-instagram"></i>
-        <span>@amjadgg</span>
-      </a>
-      <a href="https://wa.me/905385818771" target="_blank" class="contact-item">
-        <i class="fab fa-whatsapp"></i>
-        <span>+90 538 581 87 71</span>
-      </a>
-    </div>
-    <p style="margin-top: 20px; opacity: 0.8; font-size: 0.9rem;">&copy; 2025 Amjad Yaratıcı Hizmetler. Tüm hakları saklıdır.</p>
-  </footer>
-
-  <!-- Hesaplama Aracı Butonu -->
-  <button class="calculator-btn" id="calculatorBtn">
-    <i class="fas fa-calculator"></i>
-  </button>
-  
-  <!-- WhatsApp Butonu -->
-  <a href="https://wa.me/905385818771" class="whatsapp-float" target="_blank">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-
-  <!-- Hesaplama Aracı Kutusu -->
-  <div class="calculator-container" id="calculatorContainer">
-    <div class="calculator-header">
-      <h3>Fiyat Hesaplama Aracı</h3>
-      <button class="close-calculator" id="closeCalculator">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
-    
-    <div class="first-order-discount">
-      <i class="fas fa-tag"></i>
-      <span>İlk siparişinize özel <strong>%15 indirim</strong>!</span>
-    </div>
-    
-    <div class="calculator-form" id="calculatorForm">
-      <!-- Servis seçim alanları burada oluşturulacak -->
-    </div>
-    
-    <div class="calculator-summary">
-      <div class="summary-item">
-        <span>Ara Toplam:</span>
-        <span id="subtotal">0 TL</span>
-      </div>
-      <div class="summary-item">
-        <span>İndirim (%15):</span>
-        <span id="discount">0 TL</span>
-      </div>
-      <div class="summary-item total">
-        <span>Toplam Fiyat:</span>
-        <span id="total">0 TL</span>
-      </div>
-    </div>
-    
-    <button class="calculate-btn" id="calculateBtn">
-      <i class="fas fa-calculator"></i> Fiyatı Hesapla
-    </button>
-    
-    <button class="invoice-btn" id="invoiceBtn">
-      <i class="fas fa-file-invoice"></i> Faturayı İndir
-    </button>
-    
-    <button class="whatsapp-btn" id="whatsappBtn">
-      <i class="fab fa-whatsapp"></i> WhatsApp'ta Gönder
-    </button>
-  </div>
-
-  <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      const categories = document.querySelectorAll('.category');
-      
-      // Animate categories on load
-      categories.forEach((category, index) => {
-        setTimeout(() => {
-          category.style.opacity = '1';
-          category.style.transform = 'translateY(0)';
-        }, 200 * index);
-      });
-      
-      // Hesaplama aracı fonksiyonları
-      const calculatorBtn = document.getElementById('calculatorBtn');
-      const closeCalculator = document.getElementById('closeCalculator');
-      const calculatorContainer = document.getElementById('calculatorContainer');
-      const calculatorForm = document.getElementById('calculatorForm');
-      const calculateBtn = document.getElementById('calculateBtn');
-      const invoiceBtn = document.getElementById('invoiceBtn');
-      const whatsappBtn = document.getElementById('whatsappBtn');
-      
-      // Servis fiyat listesi
-      const services = [
-        { name: "Basit Logo (Temel)", price: 2240 },
-        { name: "Profesyonel Logo (3 seçenek)", price: 3200 },
-        { name: "Kurumsal Kimlik (Logo + renkler + fontlar)", price: 4800 },
-        { name: "Mevcut logoda değişiklik", price: 1600 },
-        { name: "Tek yüzey ambalaj tasarımı (1-2 yüz)", price: 1600 },
-        { name: "Çok yüzeyli ambalaj tasarımı (1-5 yüz)", price: 2240 },
-        { name: "Ürün etiketi tasarımı", price: 640 },
-        { name: "Premium hediye kutusu tasarımı", price: 4800 },
-        { name: "Temel video montaj (saatlik)", price: 3200 },
-        { name: "After Effects animasyon (saatlik)", price: 6400 },
-        { name: "Reklam videosu (30-60 saniye)", price: 4800 },
-        { name: "Kapsamlı tanıtım videosu (2-3 dakika)", price: 11200 },
-        { name: "AI ile fotoğraftan video oluşturma (başına)", price: 800 },
-        { name: "Tek reklam afişi", price: 160 },
-        { name: "5'li afiş paketi", price: 800 },
-        { name: "20'li afiş paketi", price: 1120 },
-        { name: "Kartvizit tasarımı", price: 800 },
-        { name: "Broşür tasarımı (tek yüz)", price: 1600 },
-        { name: "Temel renk düzeltme (fotoğraf başı)", price: 160 },
-        { name: "Arka plan değiştirme (fotoğraf başı)", price: 320 },
-        { name: "Portre düzeltme (cilt, göz, vs.)", price: 480 },
-        { name: "Ürün fotoğrafı düzenleme", price: 224 },
-        { name: "10 fotoğraflık paket", price: 2240 },
-        { name: "20 fotoğraflık paket", price: 3840 },
-        { name: "Web site arayüz tasarımı", price: 6400 },
-        { name: "Sosyal medya kapak fotoğrafı", price: 320 },
-        { name: "Mobil uygulama arayüzü", price: 9600 },
-        { name: "Karikatür çizimi", price: 800 }
-      ];
-      
-      // Servis seçeneklerini oluştur
-      function createServiceOptions() {
-        let html = '';
-        
-        // İlk servis seçimi için alan oluştur
-        html += `
-          <div class="form-group">
-            <label>Servis Seçin</label>
-            <select class="service-select" name="service[]">
-              <option value="">-- Servis seçin --</option>
-              ${services.map(service => 
-                `<option value="${service.price}">${service.name} - ${service.price.toLocaleString('tr-TR')} TL</option>`
-              ).join('')}
-            </select>
-            <div class="quantity-control">
-              <button class="quantity-btn minus" type="button">-</button>
-              <input type="number" class="quantity-input" value="1" min="1">
-              <button class="quantity-btn plus" type="button">+</button>
-            </div>
-          </div>
-        `;
-        
-        calculatorForm.innerHTML = html;
-        
-        // Yeni servis ekleme butonu
-        const addButton = document.createElement('button');
-        addButton.className = 'add-service-btn';
-        addButton.innerHTML = '<i class="fas fa-plus"></i> Başka Servis Ekle';
-        addButton.onclick = addServiceField;
-        calculatorForm.appendChild(addButton);
-        
-        // Miktar butonlarına event listener ekle
-        addQuantityEventListeners();
-      }
-      
-      // Yeni servis alanı ekle
-      function addServiceField() {
-        const newService = document.createElement('div');
-        newService.className = 'form-group';
-        newService.innerHTML = `
-          <label>Servis Seçin</label>
-          <select class="service-select" name="service[]">
-            <option value="">-- Servis seçin --</option>
-            ${services.map(service => 
-              `<option value="${service.price}">${service.name} - ${service.price.toLocaleString('tr-TR')} TL</option>`
-            ).join('')}
-          </select>
-          <div class="quantity-control">
-            <button class="quantity-btn minus" type="button">-</button>
-            <input type="number" class="quantity-input" value="1" min="1">
-            <button class="quantity-btn plus" type="button">+</button>
-          </div>
-          <button class="remove-service-btn" type="button">
-            <i class="fas fa-trash"></i> Kaldır
-          </button>
-        `;
-        
-        // Kaldır butonuna event listener ekle
-        const removeBtn = newService.querySelector('.remove-service-btn');
-        removeBtn.addEventListener('click', function() {
-          newService.remove();
-        });
-        
-        // Ekle butonundan önce ekle
-        const addButton = document.querySelector('.add-service-btn');
-        calculatorForm.insertBefore(newService, addButton);
-        
-        // Miktar butonlarına event listener ekle
-        addQuantityEventListeners(newService);
-      }
-      
-      // Miktar kontrol butonları için event listener ekle
-      function addQuantityEventListeners(container = document) {
-        const minusBtns = container.querySelectorAll('.minus');
-        const plusBtns = container.querySelectorAll('.plus');
-        
-        minusBtns.forEach(btn => {
-          btn.addEventListener('click', function() {
-            const input = this.nextElementSibling;
-            if (input.value > 1) {
-              input.value = parseInt(input.value) - 1;
-            }
-          });
-        });
-        
-        plusBtns.forEach(btn => {
-          btn.addEventListener('click', function() {
-            const input = this.previousElementSibling;
-            input.value = parseInt(input.value) + 1;
-          });
-        });
-      }
-      
-      // Hesaplama fonksiyonu
-      function calculateTotal() {
-        const serviceGroups = document.querySelectorAll('.form-group');
-        let subtotal = 0;
-        let selectedServices = [];
-        
-        serviceGroups.forEach(group => {
-          const select = group.querySelector('.service-select');
-          const quantityInput = group.querySelector('.quantity-input');
-          
-          if (select.value) {
-            const price = parseFloat(select.value);
-            const quantity = parseInt(quantityInput.value) || 1;
-            const total = price * quantity;
-            subtotal += total;
-            
-            selectedServices.push({
-              name: select.options[select.selectedIndex].text.split(' - ')[0],
-              price: price,
-              quantity: quantity,
-              total: total
-            });
-          }
-        });
-        
-        // İndirim hesapla (%15)
-        const discount = subtotal * 0.15;
-        const total = subtotal - discount;
-        
-        // Sonuçları göster
-        document.getElementById('subtotal').textContent = subtotal.toLocaleString('tr-TR') + ' TL';
-        document.getElementById('discount').textContent = discount.toLocaleString('tr-TR') + ' TL';
-        document.getElementById('total').textContent = total.toLocaleString('tr-TR') + ' TL';
-        
-        // Fatura ve WhatsApp butonlarını göster ve verileri sakla
-        if (subtotal > 0) {
-          invoiceBtn.style.display = 'block';
-          whatsappBtn.style.display = 'block';
-          invoiceBtn.dataset.services = JSON.stringify(selectedServices);
-          invoiceBtn.dataset.subtotal = subtotal.toFixed(2);
-          invoiceBtn.dataset.discount = discount.toFixed(2);
-          invoiceBtn.dataset.total = total.toFixed(2);
-        } else {
-          invoiceBtn.style.display = 'none';
-          whatsappBtn.style.display = 'none';
-        }
-      }
-      
-      // Fatura oluşturma fonksiyonu
-      function generateInvoice() {
-        const services = JSON.parse(invoiceBtn.dataset.services);
-        const subtotal = invoiceBtn.dataset.subtotal;
-        const discount = invoiceBtn.dataset.discount;
-        const total = invoiceBtn.dataset.total;
-        
-        // Fatura HTML içeriği oluştur
-        let invoiceHTML = `
           <!DOCTYPE html>
           <html lang="tr">
           <head>
@@ -1294,6 +84,14 @@
                 margin-bottom: 10px;
                 color: #6a11cb;
               }
+              .discount-note {
+                background-color: #fff9c4;
+                padding: 10px;
+                border-radius: 5px;
+                margin-top: 20px;
+                font-size: 0.9em;
+                text-align: center;
+              }
             </style>
           </head>
           <body>
@@ -1305,8 +103,8 @@
             
             <div class="invoice-info">
               <div>
-                <p><strong>Fatura No:</strong> AMJ-${Math.floor(Math.random() * 10000)}</p>
-                <p><strong>Tarih:</strong> ${new Date().toLocaleDateString('tr-TR')}</p>
+                <p><strong>Fatura No:</strong> AMJ-9439</p>
+                <p><strong>Tarih:</strong> 23.06.2025</p>
               </div>
               <div>
                 <p><strong>Müşteri:</strong> [Müşteri Adı]</p>
@@ -1325,23 +123,135 @@
                 </tr>
               </thead>
               <tbody>
-        `;
         
-        // Hizmetleri ekle
-        services.forEach((service, index) => {
-          invoiceHTML += `
             <tr>
-              <td>${index + 1}</td>
-              <td>${service.name}</td>
-              <td>${service.price.toLocaleString('tr-TR')} TL</td>
-              <td>${service.quantity}</td>
-              <td>${service.total.toLocaleString('tr-TR')} TL</td>
+              <td>1</td>
+              <td>Ürün etiketi tasarımı</td>
+              <td>640 TL</td>
+              <td>1</td>
+              <td>640 TL</td>
             </tr>
-          `;
-        });
-        
-        // Toplamları ekle
-        invoiceHTML += `
+          
+            <tr>
+              <td>2</td>
+              <td>Premium hediye kutusu tasarımı</td>
+              <td>4.800 TL</td>
+              <td>1</td>
+              <td>4.800 TL</td>
+            </tr>
+          
+            <tr>
+              <td>3</td>
+              <td>20 fotoğraflık paket</td>
+              <td>3.840 TL</td>
+              <td>1</td>
+              <td>3.840 TL</td>
+            </tr>
+          
+            <tr>
+              <td>4</td>
+              <td>10 fotoğraflık paket</td>
+              <td>2.240 TL</td>
+              <td>1</td>
+              <td>2.240 TL</td>
+            </tr>
+          
+            <tr>
+              <td>5</td>
+              <td>Ürün fotoğrafı düzenleme</td>
+              <td>224 TL</td>
+              <td>1</td>
+              <td>224 TL</td>
+            </tr>
+          
+            <tr>
+              <td>6</td>
+              <td>Portre düzeltme (cilt, göz, vs.)</td>
+              <td>480 TL</td>
+              <td>1</td>
+              <td>480 TL</td>
+            </tr>
+          
+            <tr>
+              <td>7</td>
+              <td>Temel renk düzeltme (fotoğraf başı)</td>
+              <td>160 TL</td>
+              <td>1</td>
+              <td>160 TL</td>
+            </tr>
+          
+            <tr>
+              <td>8</td>
+              <td>Arka plan değiştirme (fotoğraf başı)</td>
+              <td>320 TL</td>
+              <td>1</td>
+              <td>320 TL</td>
+            </tr>
+          
+            <tr>
+              <td>9</td>
+              <td>Arka plan değiştirme (fotoğraf başı)</td>
+              <td>320 TL</td>
+              <td>1</td>
+              <td>320 TL</td>
+            </tr>
+          
+            <tr>
+              <td>10</td>
+              <td>Arka plan değiştirme (fotoğraf başı)</td>
+              <td>320 TL</td>
+              <td>6</td>
+              <td>1.920 TL</td>
+            </tr>
+          
+            <tr>
+              <td>11</td>
+              <td>Arka plan değiştirme (fotoğraf başı)</td>
+              <td>320 TL</td>
+              <td>1</td>
+              <td>320 TL</td>
+            </tr>
+          
+            <tr>
+              <td>12</td>
+              <td>Arka plan değiştirme (fotoğraf başı)</td>
+              <td>320 TL</td>
+              <td>1</td>
+              <td>320 TL</td>
+            </tr>
+          
+            <tr>
+              <td>13</td>
+              <td>20'li afiş paketi</td>
+              <td>1.120 TL</td>
+              <td>1</td>
+              <td>1.120 TL</td>
+            </tr>
+          
+            <tr>
+              <td>14</td>
+              <td>20'li afiş paketi</td>
+              <td>1.120 TL</td>
+              <td>1</td>
+              <td>1.120 TL</td>
+            </tr>
+          
+            <tr>
+              <td>15</td>
+              <td>5'li afiş paketi</td>
+              <td>800 TL</td>
+              <td>1</td>
+              <td>800 TL</td>
+            </tr>
+          
+            <tr>
+              <td>16</td>
+              <td>Tek reklam afişi</td>
+              <td>160 TL</td>
+              <td>1</td>
+              <td>160 TL</td>
+            </tr>
+          
               </tbody>
             </table>
             
@@ -1349,142 +259,20 @@
               <table>
                 <tr>
                   <td>Ara Toplam:</td>
-                  <td>${parseFloat(subtotal).toLocaleString('tr-TR')} TL</td>
+                  <td>18.784 TL</td>
                 </tr>
-                <tr>
-                  <td>İndirim (%15):</td>
-                  <td>${parseFloat(discount).toLocaleString('tr-TR')} TL</td>
-                </tr>
+        
                 <tr class="total-row">
                   <td>GENEL TOPLAM:</td>
-                  <td>${parseFloat(total).toLocaleString('tr-TR')} TL</td>
+                  <td>18.784 TL</td>
                 </tr>
               </table>
             </div>
-            
+        
             <div class="invoice-footer">
               <p>Teşekkür ederiz! • amjadhammad004@gmail.com • +90 538 581 87 71</p>
               <p>Bu fatura elektronik ortamda hazırlanmıştır, imza gerektirmez.</p>
             </div>
           </body>
           </html>
-        `;
         
-        // PDF olarak indir
-        const blob = new Blob([invoiceHTML], { type: 'text/html' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = `Amjad_Fatura_${new Date().toISOString().slice(0, 10)}.html`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
-      }
-      
-      // WhatsApp'ta gönder fonksiyonu
-      function sendViaWhatsApp() {
-        const services = JSON.parse(invoiceBtn.dataset.services);
-        const subtotal = invoiceBtn.dataset.subtotal;
-        const discount = invoiceBtn.dataset.discount;
-        const total = invoiceBtn.dataset.total;
-        
-        let message = `Merhaba, Amjad Yaratıcı Hizmetler'den teklif almak istiyorum:\n\n`;
-        
-        services.forEach((service, index) => {
-          message += `➡ ${service.name}\n`;
-          message += `   Adet: ${service.quantity}\n`;
-          message += `   Fiyat: ${service.price.toLocaleString('tr-TR')} TL\n`;
-          message += `   Toplam: ${service.total.toLocaleString('tr-TR')} TL\n\n`;
-        });
-        
-        message += `\nAra Toplam: ${parseFloat(subtotal).toLocaleString('tr-TR')} TL\n`;
-        message += `İndirim (%15): ${parseFloat(discount).toLocaleString('tr-TR')} TL\n`;
-        message += `GENEL TOPLAM: ${parseFloat(total).toLocaleString('tr-TR')} TL\n\n`;
-        message += `Bu teklifle ilgileniyorum, detaylar için iletişime geçebilir misiniz?`;
-        
-        const phoneNumber = "905385818771";
-        const encodedMessage = encodeURIComponent(message);
-        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-        
-        window.open(whatsappUrl, '_blank');
-      }
-      
-      // Servis öğelerine tıklanınca hesaplayıcıya ekle
-      function addServiceToCalculator(serviceName, servicePrice) {
-        // Hesaplayıcıyı aç
-        if (!calculatorContainer.classList.contains('active')) {
-          calculatorContainer.classList.add('active');
-          createServiceOptions();
-        }
-        
-        // Servis seçim alanlarını bul
-        const serviceSelects = document.querySelectorAll('.service-select');
-        
-        // Boş bir seçim alanı bul
-        let emptySelect = null;
-        for (let i = 0; i < serviceSelects.length; i++) {
-          if (!serviceSelects[i].value) {
-            emptySelect = serviceSelects[i];
-            break;
-          }
-        }
-        
-        // Eğer boş alan yoksa yeni alan ekle
-        if (!emptySelect) {
-          addServiceField();
-          // Yeni eklenen alanı bul
-          const newSelect = document.querySelectorAll('.service-select');
-          emptySelect = newSelect[newSelect.length - 1];
-        }
-        
-        // Servisi seç
-        for (let i = 0; i < emptySelect.options.length; i++) {
-          if (emptySelect.options[i].text.includes(serviceName)) {
-            emptySelect.selectedIndex = i;
-            break;
-          }
-        }
-        
-        // Animasyon ekle
-        const formGroup = emptySelect.closest('.form-group');
-        formGroup.classList.add('service-added');
-        setTimeout(() => {
-          formGroup.classList.remove('service-added');
-        }, 1000);
-        
-        // Hesaplamayı yap
-        calculateTotal();
-      }
-      
-      // Event listener'lar
-      calculatorBtn.addEventListener('click', function() {
-        calculatorContainer.classList.toggle('active');
-        if (calculatorContainer.classList.contains('active')) {
-          createServiceOptions();
-        }
-      });
-      
-      closeCalculator.addEventListener('click', function() {
-        calculatorContainer.classList.remove('active');
-      });
-      
-      calculateBtn.addEventListener('click', calculateTotal);
-      invoiceBtn.addEventListener('click', generateInvoice);
-      whatsappBtn.addEventListener('click', sendViaWhatsApp);
-      
-      // Servis öğelerine tıklama eventi ekle
-      document.querySelectorAll('.service-item').forEach(item => {
-        item.addEventListener('click', function() {
-          const serviceName = this.dataset.name;
-          const servicePrice = this.dataset.price;
-          addServiceToCalculator(serviceName, servicePrice);
-        });
-      });
-      
-      // Sayfa yüklendiğinde hesaplama aracını gizle
-      calculatorContainer.classList.remove('active');
-    });
-  </script>
-</body>
-</html>
