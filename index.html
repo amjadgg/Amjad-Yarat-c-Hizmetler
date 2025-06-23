@@ -136,6 +136,12 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .service-item:hover {
+      background-color: #f9f9ff;
     }
     
     .service-item:last-child {
@@ -257,11 +263,19 @@
       justify-content: center;
       font-size: 1.8rem;
       transition: all 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+      100% { transform: scale(1); }
     }
     
     .calculator-btn:hover {
       transform: scale(1.1) rotate(10deg);
       box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      animation: none;
     }
     
     .calculator-container {
@@ -490,9 +504,34 @@
       display: none;
     }
     
-    .invoice-btn:hover {
+    .whatsapp-btn {
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: bold;
+      width: 100%;
+      box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+      transition: all 0.3s ease;
+      margin-top: 10px;
+      display: none;
+    }
+    
+    .invoice-btn:hover, .whatsapp-btn:hover {
       transform: translateY(-3px);
       box-shadow: 0 6px 15px rgba(76, 175, 80, 0.4);
+    }
+    
+    .service-added {
+      animation: highlight 1s;
+    }
+    
+    @keyframes highlight {
+      0% { background-color: rgba(106, 17, 203, 0.1); }
+      100% { background-color: transparent; }
     }
     
     @media (max-width: 768px) {
@@ -575,21 +614,21 @@
         </div>
         <h2>Logo Tasarımı</h2>
         <ul class="services-list">
-          <li class="service-item">
+          <li class="service-item" data-name="Basit Logo (Temel)" data-price="2240">
             <span class="service-name">Basit Logo (Temel)</span>
-            <span class="service-price">150 TL</span>
+            <span class="service-price">2,240 TL</span>
           </li>
-          <li class="service-item">
+          <li class="service-item" data-name="Profesyonel Logo (3 seçenek)" data-price="3200">
             <span class="service-name">Profesyonel Logo (3 seçenek)</span>
-            <span class="service-price">300 TL</span>
+            <span class="service-price">3,200 TL</span>
           </li>
-          <li class="service-item">
+          <li class="service-item" data-name="Kurumsal Kimlik (Logo + renkler + fontlar)" data-price="4800">
             <span class="service-name">Kurumsal Kimlik (Logo + renkler + fontlar)</span>
-            <span class="service-price">600 TL</span>
+            <span class="service-price">4,800 TL</span>
           </li>
-          <li class="service-item">
+          <li class="service-item" data-name="Mevcut logoda değişiklik" data-price="1600">
             <span class="service-name">Mevcut logoda değişiklik</span>
-            <span class="service-price">100 TL</span>
+            <span class="service-price">1,600 TL</span>
           </li>
         </ul>
       </div>
@@ -600,21 +639,21 @@
         </div>
         <h2>Ambalaj Tasarımı</h2>
         <ul class="services-list">
-          <li class="service-item">
+          <li class="service-item" data-name="Tek yüzey ambalaj tasarımı (1-2 yüz)" data-price="1600">
             <span class="service-name">Tek yüzey ambalaj tasarımı (1-2 yüz)</span>
-            <span class="service-price">350 TL</span>
+            <span class="service-price">1,600 TL</span>
           </li>
-          <li class="service-item">
+          <li class="service-item" data-name="Çok yüzeyli ambalaj tasarımı (1-5 yüz)" data-price="2240">
             <span class="service-name">Çok yüzeyli ambalaj tasarımı (1-5 yüz)</span>
-            <span class="service-price">400 TL</span>
+            <span class="service-price">2,240 TL</span>
           </li>
-          <li class="service-item">
+          <li class="service-item" data-name="Ürün etiketi tasarımı" data-price="640">
             <span class="service-name">Ürün etiketi tasarımı</span>
-            <span class="service-price">150 TL</span>
+            <span class="service-price">640 TL</span>
           </li>
-          <li class="service-item">
+          <li class="service-item" data-name="Premium hediye kutusu tasarımı" data-price="4800">
             <span class="service-name">Premium hediye kutusu tasarımı</span>
-            <span class="service-price">600 TL</span>
+            <span class="service-price">4,800 TL</span>
           </li>
         </ul>
       </div>
@@ -625,25 +664,25 @@
         </div>
         <h2>Video Kurgu & Montaj</h2>
         <ul class="services-list">
-          <li class="service-item">
+          <li class="service-item" data-name="Temel video montaj (saatlik)" data-price="3200">
             <span class="service-name">Temel video montaj (saatlik)</span>
-            <span class="service-price">200 TL/saat</span>
+            <span class="service-price">3,200 TL</span>
           </li>
-          <li class="service-item">
+          <li class="service-item" data-name="After Effects animasyon (saatlik)" data-price="6400">
             <span class="service-name">After Effects animasyon (saatlik)</span>
-            <span class="service-price">350 TL/saat</span>
+            <span class="service-price">6,400 TL</span>
           </li>
-          <li class="service-item">
+          <li class="service-item" data-name="Reklam videosu (30-60 saniye)" data-price="4800">
             <span class="service-name">Reklam videosu (30-60 saniye)</span>
-            <span class="service-price">900 TL</span>
+            <span class="service-price">4,800 TL</span>
           </li>
-          <li class="service-item">
+          <li class="service-item" data-name="Kapsamlı tanıtım videosu (2-3 dakika)" data-price="11200">
             <span class="service-name">Kapsamlı tanıtım videosu (2-3 dakika)</span>
-            <span class="service-price">1500 TL</span>
+            <span class="service-price">11,200 TL</span>
           </li>
-          <li class="service-item">
+          <li class="service-item" data-name="AI ile fotoğraftan video oluşturma (başına)" data-price="800">
             <span class="service-name">AI ile fotoğraftan video oluşturma (başına)</span>
-            <span class="service-price">250 TL</span>
+            <span class="service-price">800 TL</span>
           </li>
         </ul>
       </div>
@@ -654,25 +693,25 @@
         </div>
         <h2>Grafik Tasarım & Pazarlama</h2>
         <ul class="services-list">
-          <li class="service-item">
+          <li class="service-item" data-name="Tek reklam afişi" data-price="160">
             <span class="service-name">Tek reklam afişi</span>
-            <span class="service-price">70 TL</span>
+            <span class="service-price">160 TL</span>
           </li>
-          <li class="service-item">
+          <li class="service-item" data-name="5'li afiş paketi" data-price="800">
             <span class="service-name">5'li afiş paketi</span>
-            <span class="service-price">300 TL</span>
+            <span class="service-price">800 TL</span>
           </li>
-          <li class="service-item">
+          <li class="service-item" data-name="20'li afiş paketi" data-price="1120">
             <span class="service-name">20'li afiş paketi</span>
-            <span class="service-price">1000 TL</span>
+            <span class="service-price">1,120 TL</span>
           </li>
-          <li class="service-item">
+          <li class="service-item" data-name="Kartvizit tasarımı" data-price="800">
             <span class="service-name">Kartvizit tasarımı</span>
-            <span class="service-price">120 TL</span>
+            <span class="service-price">800 TL</span>
           </li>
-          <li class="service-item">
+          <li class="service-item" data-name="Broşür tasarımı (tek yüz)" data-price="1600">
             <span class="service-name">Broşür tasarımı (tek yüz)</span>
-            <span class="service-price">250 TL</span>
+            <span class="service-price">1,600 TL</span>
           </li>
         </ul>
       </div>
@@ -683,29 +722,29 @@
         </div>
         <h2>Fotoğraf Düzenleme</h2>
         <ul class="services-list">
-          <li class="service-item">
+          <li class="service-item" data-name="Temel renk düzeltme (fotoğraf başı)" data-price="160">
             <span class="service-name">Temel renk düzeltme (fotoğraf başı)</span>
-            <span class="service-price">30 TL</span>
+            <span class="service-price">160 TL</span>
           </li>
-          <li class="service-item">
+          <li class="service-item" data-name="Arka plan değiştirme (fotoğraf başı)" data-price="320">
             <span class="service-name">Arka plan değiştirme (fotoğraf başı)</span>
-            <span class="service-price">50 TL</span>
+            <span class="service-price">320 TL</span>
           </li>
-          <li class="service-item">
+          <li class="service-item" data-name="Portre düzeltme (cilt, göz, vs.)" data-price="480">
             <span class="service-name">Portre düzeltme (cilt, göz, vs.)</span>
-            <span class="service-price">70 TL</span>
+            <span class="service-price">480 TL</span>
           </li>
-          <li class="service-item">
+          <li class="service-item" data-name="Ürün fotoğrafı düzenleme" data-price="224">
             <span class="service-name">Ürün fotoğrafı düzenleme</span>
-            <span class="service-price">40 TL</span>
+            <span class="service-price">224 TL</span>
           </li>
-          <li class="service-item">
+          <li class="service-item" data-name="10 fotoğraflık paket" data-price="2240">
             <span class="service-name">10 fotoğraflık paket</span>
-            <span class="service-price">300 TL</span>
+            <span class="service-price">2,240 TL</span>
           </li>
-          <li class="service-item">
+          <li class="service-item" data-name="20 fotoğraflık paket" data-price="3840">
             <span class="service-name">20 fotoğraflık paket</span>
-            <span class="service-price">550 TL</span>
+            <span class="service-price">3,840 TL</span>
           </li>
         </ul>
       </div>
@@ -716,21 +755,21 @@
         </div>
         <h2>Diğer Hizmetler</h2>
         <ul class="services-list">
-          <li class="service-item">
+          <li class="service-item" data-name="Web site arayüz tasarımı" data-price="6400">
             <span class="service-name">Web site arayüz tasarımı</span>
-            <span class="service-price">800 TL</span>
+            <span class="service-price">6,400 TL</span>
           </li>
-          <li class="service-item">
+          <li class="service-item" data-name="Sosyal medya kapak fotoğrafı" data-price="320">
             <span class="service-name">Sosyal medya kapak fotoğrafı</span>
-            <span class="service-price">120 TL</span>
+            <span class="service-price">320 TL</span>
           </li>
-          <li class="service-item">
+          <li class="service-item" data-name="Mobil uygulama arayüzü" data-price="9600">
             <span class="service-name">Mobil uygulama arayüzü</span>
-            <span class="service-price">1200 TL</span>
+            <span class="service-price">9,600 TL</span>
           </li>
-          <li class="service-item">
+          <li class="service-item" data-name="Karikatür çizimi" data-price="800">
             <span class="service-name">Karikatür çizimi</span>
-            <span class="service-price">200 TL</span>
+            <span class="service-price">800 TL</span>
           </li>
         </ul>
       </div>
@@ -743,7 +782,7 @@
     <div class="contact-info">
       <div class="contact-item">
         <i class="fas fa-phone"></i>
-        <span>++90 538 581 87 71</span>
+        <span>+90 538 581 87 71</span>
       </div>
       <div class="contact-item">
         <i class="fas fa-envelope"></i>
@@ -806,6 +845,10 @@
     <button class="invoice-btn" id="invoiceBtn">
       <i class="fas fa-file-invoice"></i> Faturayı İndir
     </button>
+    
+    <button class="whatsapp-btn" id="whatsappBtn">
+      <i class="fab fa-whatsapp"></i> WhatsApp'ta Gönder
+    </button>
   </div>
 
   <script>
@@ -835,36 +878,38 @@
       const calculatorForm = document.getElementById('calculatorForm');
       const calculateBtn = document.getElementById('calculateBtn');
       const invoiceBtn = document.getElementById('invoiceBtn');
+      const whatsappBtn = document.getElementById('whatsappBtn');
       
       // Servis fiyat listesi
       const services = [
-        { name: "Basit Logo (Temel)", price: 150 },
-        { name: "Profesyonel Logo (3 seçenek)", price: 300 },
-        { name: "Kurumsal Kimlik", price: 600 },
-        { name: "Tek yüzey ambalaj tasarımı (1-2 yüz)", price: 350 },
-        { name: "Çok yüzeyli ambalaj tasarımı (1-5 yüz)", price: 400 },
-        { name: "Ürün etiketi tasarımı", price: 150 },
-        { name: "Premium hediye kutusu tasarımı", price: 600 },
-        { name: "Temel video montaj (saatlik)", price: 200 },
-        { name: "After Effects animasyon (saatlik)", price: 350 },
-        { name: "Reklam videosu (30-60 saniye)", price: 900 },
-        { name: "Kapsamlı tanıtım videosu (2-3 dakika)", price: 1500 },
-        { name: "AI ile fotoğraftan video oluşturma (başına)", price: 250 },
-        { name: "Tek reklam afişi", price: 70 },
-        { name: "5'li afiş paketi", price: 300 },
-        { name: "20'li afiş paketi", price: 1000 },
-        { name: "Kartvizit tasarımı", price: 120 },
-        { name: "Broşür tasarımı (tek yüz)", price: 250 },
-        { name: "Temel renk düzeltme", price: 30 },
-        { name: "Arka plan değiştirme", price: 50 },
-        { name: "Portre düzeltme", price: 70 },
-        { name: "Ürün fotoğrafı düzenleme", price: 40 },
-        { name: "10 fotoğraflık paket", price: 300 },
-        { name: "20 fotoğraflık paket", price: 550 },
-        { name: "Web site arayüz tasarımı", price: 800 },
-        { name: "Sosyal medya kapak fotoğrafı", price: 120 },
-        { name: "Mobil uygulama arayüzü", price: 1200 },
-        { name: "Karikatür çizimi", price: 200 }
+        { name: "Basit Logo (Temel)", price: 2240 },
+        { name: "Profesyonel Logo (3 seçenek)", price: 3200 },
+        { name: "Kurumsal Kimlik (Logo + renkler + fontlar)", price: 4800 },
+        { name: "Mevcut logoda değişiklik", price: 1600 },
+        { name: "Tek yüzey ambalaj tasarımı (1-2 yüz)", price: 1600 },
+        { name: "Çok yüzeyli ambalaj tasarımı (1-5 yüz)", price: 2240 },
+        { name: "Ürün etiketi tasarımı", price: 640 },
+        { name: "Premium hediye kutusu tasarımı", price: 4800 },
+        { name: "Temel video montaj (saatlik)", price: 3200 },
+        { name: "After Effects animasyon (saatlik)", price: 6400 },
+        { name: "Reklam videosu (30-60 saniye)", price: 4800 },
+        { name: "Kapsamlı tanıtım videosu (2-3 dakika)", price: 11200 },
+        { name: "AI ile fotoğraftan video oluşturma (başına)", price: 800 },
+        { name: "Tek reklam afişi", price: 160 },
+        { name: "5'li afiş paketi", price: 800 },
+        { name: "20'li afiş paketi", price: 1120 },
+        { name: "Kartvizit tasarımı", price: 800 },
+        { name: "Broşür tasarımı (tek yüz)", price: 1600 },
+        { name: "Temel renk düzeltme (fotoğraf başı)", price: 160 },
+        { name: "Arka plan değiştirme (fotoğraf başı)", price: 320 },
+        { name: "Portre düzeltme (cilt, göz, vs.)", price: 480 },
+        { name: "Ürün fotoğrafı düzenleme", price: 224 },
+        { name: "10 fotoğraflık paket", price: 2240 },
+        { name: "20 fotoğraflık paket", price: 3840 },
+        { name: "Web site arayüz tasarımı", price: 6400 },
+        { name: "Sosyal medya kapak fotoğrafı", price: 320 },
+        { name: "Mobil uygulama arayüzü", price: 9600 },
+        { name: "Karikatür çizimi", price: 800 }
       ];
       
       // Servis seçeneklerini oluştur
@@ -878,7 +923,7 @@
             <select class="service-select" name="service[]">
               <option value="">-- Servis seçin --</option>
               ${services.map(service => 
-                `<option value="${service.price}">${service.name} - ${service.price} TL</option>`
+                `<option value="${service.price}">${service.name} - ${service.price.toLocaleString()} TL</option>`
               ).join('')}
             </select>
             <div class="quantity-control">
@@ -911,7 +956,7 @@
           <select class="service-select" name="service[]">
             <option value="">-- Servis seçin --</option>
             ${services.map(service => 
-              `<option value="${service.price}">${service.name} - ${service.price} TL</option>`
+              `<option value="${service.price}">${service.name} - ${service.price.toLocaleString()} TL</option>`
             ).join('')}
           </select>
           <div class="quantity-control">
@@ -990,19 +1035,21 @@
         const total = subtotal - discount;
         
         // Sonuçları göster
-        document.getElementById('subtotal').textContent = subtotal.toFixed(2) + ' TL';
-        document.getElementById('discount').textContent = discount.toFixed(2) + ' TL';
-        document.getElementById('total').textContent = total.toFixed(2) + ' TL';
+        document.getElementById('subtotal').textContent = subtotal.toLocaleString('tr-TR') + ' TL';
+        document.getElementById('discount').textContent = discount.toLocaleString('tr-TR') + ' TL';
+        document.getElementById('total').textContent = total.toLocaleString('tr-TR') + ' TL';
         
-        // Fatura butonunu göster ve verileri sakla
+        // Fatura ve WhatsApp butonlarını göster ve verileri sakla
         if (subtotal > 0) {
           invoiceBtn.style.display = 'block';
+          whatsappBtn.style.display = 'block';
           invoiceBtn.dataset.services = JSON.stringify(selectedServices);
           invoiceBtn.dataset.subtotal = subtotal.toFixed(2);
           invoiceBtn.dataset.discount = discount.toFixed(2);
           invoiceBtn.dataset.total = total.toFixed(2);
         } else {
           invoiceBtn.style.display = 'none';
+          whatsappBtn.style.display = 'none';
         }
       }
       
@@ -1130,9 +1177,9 @@
             <tr>
               <td>${index + 1}</td>
               <td>${service.name}</td>
-              <td>${service.price.toFixed(2)} TL</td>
+              <td>${service.price.toLocaleString('tr-TR')} TL</td>
               <td>${service.quantity}</td>
-              <td>${service.total.toFixed(2)} TL</td>
+              <td>${service.total.toLocaleString('tr-TR')} TL</td>
             </tr>
           `;
         });
@@ -1146,15 +1193,15 @@
               <table>
                 <tr>
                   <td>Ara Toplam:</td>
-                  <td>${subtotal} TL</td>
+                  <td>${parseFloat(subtotal).toLocaleString('tr-TR')} TL</td>
                 </tr>
                 <tr>
                   <td>İndirim (%15):</td>
-                  <td>${discount} TL</td>
+                  <td>${parseFloat(discount).toLocaleString('tr-TR')} TL</td>
                 </tr>
                 <tr class="total-row">
                   <td>GENEL TOPLAM:</td>
-                  <td>${total} TL</td>
+                  <td>${parseFloat(total).toLocaleString('tr-TR')} TL</td>
                 </tr>
               </table>
             </div>
@@ -1179,6 +1226,81 @@
         URL.revokeObjectURL(url);
       }
       
+      // WhatsApp'ta gönder fonksiyonu
+      function sendViaWhatsApp() {
+        const services = JSON.parse(invoiceBtn.dataset.services);
+        const subtotal = invoiceBtn.dataset.subtotal;
+        const discount = invoiceBtn.dataset.discount;
+        const total = invoiceBtn.dataset.total;
+        
+        let message = `Merhaba, Amjad Yaratıcı Hizmetler'den teklif almak istiyorum:\n\n`;
+        
+        services.forEach((service, index) => {
+          message += `➡ ${service.name}\n`;
+          message += `   Adet: ${service.quantity}\n`;
+          message += `   Fiyat: ${service.price.toLocaleString('tr-TR')} TL\n`;
+          message += `   Toplam: ${service.total.toLocaleString('tr-TR')} TL\n\n`;
+        });
+        
+        message += `\nAra Toplam: ${parseFloat(subtotal).toLocaleString('tr-TR')} TL\n`;
+        message += `İndirim (%15): ${parseFloat(discount).toLocaleString('tr-TR')} TL\n`;
+        message += `GENEL TOPLAM: ${parseFloat(total).toLocaleString('tr-TR')} TL\n\n`;
+        message += `Bu teklifle ilgileniyorum, detaylar için iletişime geçebilir misiniz?`;
+        
+        const phoneNumber = "905385818771";
+        const encodedMessage = encodeURIComponent(message);
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+        
+        window.open(whatsappUrl, '_blank');
+      }
+      
+      // Servis öğelerine tıklanınca hesaplayıcıya ekle
+      function addServiceToCalculator(serviceName, servicePrice) {
+        // Hesaplayıcıyı aç
+        if (!calculatorContainer.classList.contains('active')) {
+          calculatorContainer.classList.add('active');
+          createServiceOptions();
+        }
+        
+        // Servis seçim alanlarını bul
+        const serviceSelects = document.querySelectorAll('.service-select');
+        
+        // Boş bir seçim alanı bul
+        let emptySelect = null;
+        for (let i = 0; i < serviceSelects.length; i++) {
+          if (!serviceSelects[i].value) {
+            emptySelect = serviceSelects[i];
+            break;
+          }
+        }
+        
+        // Eğer boş alan yoksa yeni alan ekle
+        if (!emptySelect) {
+          addServiceField();
+          // Yeni eklenen alanı bul
+          const newSelect = document.querySelectorAll('.service-select');
+          emptySelect = newSelect[newSelect.length - 1];
+        }
+        
+        // Servisi seç
+        for (let i = 0; i < emptySelect.options.length; i++) {
+          if (emptySelect.options[i].text.includes(serviceName)) {
+            emptySelect.selectedIndex = i;
+            break;
+          }
+        }
+        
+        // Animasyon ekle
+        const formGroup = emptySelect.closest('.form-group');
+        formGroup.classList.add('service-added');
+        setTimeout(() => {
+          formGroup.classList.remove('service-added');
+        }, 1000);
+        
+        // Hesaplamayı yap
+        calculateTotal();
+      }
+      
       // Event listener'lar
       calculatorBtn.addEventListener('click', function() {
         calculatorContainer.classList.toggle('active');
@@ -1191,6 +1313,16 @@
       
       calculateBtn.addEventListener('click', calculateTotal);
       invoiceBtn.addEventListener('click', generateInvoice);
+      whatsappBtn.addEventListener('click', sendViaWhatsApp);
+      
+      // Servis öğelerine tıklama eventi ekle
+      document.querySelectorAll('.service-item').forEach(item => {
+        item.addEventListener('click', function() {
+          const serviceName = this.dataset.name;
+          const servicePrice = this.dataset.price;
+          addServiceToCalculator(serviceName, servicePrice);
+        });
+      });
       
       // Sayfa yüklendiğinde hesaplama aracını gizle
       calculatorContainer.classList.remove('active');
