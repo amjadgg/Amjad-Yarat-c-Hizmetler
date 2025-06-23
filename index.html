@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Amjad Yaratıcı Hizmetler</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎨</text></svg>">
   <style>
     * {
       margin: 0;
@@ -13,22 +14,26 @@
     }
     
     body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+      font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f8faff 0%, #f0f5ff 100%);
       color: #333;
       line-height: 1.6;
       position: relative;
       padding-bottom: 100px;
     }
     
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    
     header {
       background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
       color: white;
-      padding: 40px 20px;
+      padding: 50px 20px;
       text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 30px rgba(0,0,0,0.15);
       position: relative;
       overflow: hidden;
+      clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+      margin-bottom: 50px;
     }
     
     header::before {
@@ -49,69 +54,90 @@
     }
     
     h1 {
-      font-size: 2.8rem;
+      font-size: 3rem;
       margin-bottom: 10px;
       text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
     }
     
     .tagline {
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       opacity: 0.9;
       margin-bottom: 20px;
+      font-weight: 300;
     }
     
     .highlight {
       background: rgba(255, 255, 255, 0.2);
-      padding: 5px 15px;
+      padding: 8px 20px;
       border-radius: 30px;
       display: inline-block;
-      margin-top: 15px;
-      font-weight: bold;
+      margin-top: 20px;
+      font-weight: 500;
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(255,255,255,0.1);
     }
     
     .container {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 40px auto;
       padding: 0 20px;
     }
     
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 25px;
-      margin-top: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
     }
     
     .category {
       background: white;
-      border-radius: 15px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
-      padding: 30px;
-      transition: all 0.3s ease;
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.08);
+      padding: 35px;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
       position: relative;
       overflow: hidden;
-      border: 1px solid #eaeaea;
+      border: none;
+      opacity: 0;
+      transform: translateY(20px);
     }
     
     .category:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 12px 25px rgba(0,0,0,0.15);
+      transform: translateY(-10px) !important;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.12);
     }
     
     .category-icon {
-      font-size: 2.5rem;
+      font-size: 2.8rem;
       color: #6a11cb;
-      margin-bottom: 20px;
+      margin-bottom: 25px;
       text-align: center;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 25px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: rgba(106, 17, 203, 0.1);
     }
     
     .category h2 {
       color: #2575fc;
       text-align: center;
-      margin-bottom: 20px;
-      font-size: 1.8rem;
+      margin-bottom: 25px;
+      font-size: 1.9rem;
       position: relative;
       padding-bottom: 15px;
+      font-weight: 600;
     }
     
     .category h2::after {
@@ -120,8 +146,8 @@
       bottom: 0;
       left: 50%;
       transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
+      width: 60px;
+      height: 4px;
       background: linear-gradient(90deg, #6a11cb, #2575fc);
       border-radius: 3px;
     }
@@ -131,8 +157,8 @@
     }
     
     .service-item {
-      padding: 15px 0;
-      border-bottom: 1px solid #f0f0f0;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.05);
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -141,7 +167,8 @@
     }
     
     .service-item:hover {
-      background-color: #f9f9ff;
+      background-color: rgba(106, 17, 203, 0.03);
+      transform: translateX(5px);
     }
     
     .service-item:last-child {
@@ -149,88 +176,81 @@
     }
     
     .service-name {
-      font-weight: 600;
+      font-weight: 500;
       flex: 1;
+      color: #444;
     }
     
     .service-price {
       background: linear-gradient(135deg, #6a11cb, #2575fc);
       color: white;
-      padding: 6px 15px;
+      padding: 8px 18px;
       border-radius: 20px;
-      font-weight: bold;
+      font-weight: 600;
       min-width: 120px;
       text-align: center;
-      box-shadow: 0 3px 8px rgba(106, 17, 203, 0.3);
-    }
-    
-    .promo-banner {
-      background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-      border-radius: 12px;
-      padding: 25px;
-      margin: 40px 0;
-      text-align: center;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      border: 2px dashed #ff6b6b;
-    }
-    
-    .promo-banner h3 {
-      color: #d32f2f;
-      font-size: 1.8rem;
-      margin-bottom: 15px;
-    }
-    
-    .promo-banner p {
-      font-size: 1.2rem;
-      color: #5a1e1e;
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    
-    .discount {
-      font-weight: bold;
-      background: #d32f2f;
-      color: white;
-      padding: 3px 8px;
-      border-radius: 5px;
+      box-shadow: 0 4px 12px rgba(106, 17, 203, 0.2);
+      font-size: 0.95rem;
     }
     
     .guarantee {
       display: flex;
       justify-content: center;
       gap: 30px;
-      margin: 40px 0;
+      margin: 50px 0;
       flex-wrap: wrap;
     }
     
     .guarantee-item {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
       background: white;
-      padding: 15px 25px;
-      border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+      padding: 18px 30px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.03);
+    }
+    
+    .guarantee-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     }
     
     .guarantee-item i {
       color: #2575fc;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
+    }
+    
+    .guarantee-item span {
+      font-weight: 500;
     }
     
     footer {
-      background: #2c3e50;
-      color: #ecf0f1;
+      background: linear-gradient(135deg, #8aedff, #8aedff);
+      color: #080808;
       text-align: center;
-      padding: 30px;
-      margin-top: 50px;
+      padding: 40px 20px;
+      margin-top: 80px;
+      clip-path: polygon(0 20%, 100% 0, 100% 100%, 0% 100%);
+      padding-top: 60px;
+    }
+    
+    footer h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
     }
     
     .contact-info {
       display: flex;
       justify-content: center;
       gap: 30px;
-      margin-top: 20px;
+      margin-top: 25px;
       flex-wrap: wrap;
     }
     
@@ -238,10 +258,20 @@
       display: flex;
       align-items: center;
       gap: 10px;
+      padding: 10px 20px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 30px;
+      transition: all 0.3s ease;
+    }
+    
+    .contact-item:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-3px);
     }
     
     .contact-item i {
       color: #3498db;
+      font-size: 1.2rem;
     }
     
     /* Hesaplama Aracı Stilleri */
@@ -249,13 +279,13 @@
       position: fixed;
       bottom: 30px;
       right: 30px;
-      background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
-      color: #d32f2f;
+      background: linear-gradient(135deg, #6a11cb, #2575fc);
+      color: white;
       border: none;
       width: 70px;
       height: 70px;
       border-radius: 50%;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      box-shadow: 0 8px 25px rgba(106, 17, 203, 0.4);
       cursor: pointer;
       z-index: 1000;
       display: flex;
@@ -267,14 +297,14 @@
     }
     
     @keyframes pulse {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.1); }
-      100% { transform: scale(1); }
+      0% { transform: scale(1); box-shadow: 0 8px 25px rgba(106, 17, 203, 0.4); }
+      50% { transform: scale(1.1); box-shadow: 0 12px 30px rgba(106, 17, 203, 0.5); }
+      100% { transform: scale(1); box-shadow: 0 8px 25px rgba(106, 17, 203, 0.4); }
     }
     
     .calculator-btn:hover {
       transform: scale(1.1) rotate(10deg);
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+      box-shadow: 0 12px 30px rgba(106, 17, 203, 0.5);
       animation: none;
     }
     
@@ -282,16 +312,16 @@
       position: fixed;
       bottom: 120px;
       right: 30px;
-      width: 350px;
+      width: 380px;
       background: white;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.2);
       z-index: 1000;
       padding: 25px;
       transform: translateY(20px);
       opacity: 0;
       visibility: hidden;
-      transition: all 0.4s ease;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
     
     .calculator-container.active {
@@ -312,6 +342,7 @@
     .calculator-header h3 {
       color: #2575fc;
       font-size: 1.5rem;
+      font-weight: 600;
     }
     
     .close-calculator {
@@ -326,11 +357,13 @@
       align-items: center;
       justify-content: center;
       transition: all 0.3s ease;
+      color: #666;
     }
     
     .close-calculator:hover {
       background: #e0e0e0;
       transform: rotate(90deg);
+      color: #333;
     }
     
     .calculator-form {
@@ -366,16 +399,24 @@
       margin-bottom: 8px;
       font-weight: 600;
       color: #444;
+      font-size: 0.95rem;
     }
     
     .service-select {
       width: 100%;
-      padding: 10px;
-      border: 1px solid #ddd;
-      border-radius: 8px;
+      padding: 12px;
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
       background: #f9f9f9;
       font-size: 1rem;
       margin-bottom: 10px;
+      transition: all 0.3s ease;
+    }
+    
+    .service-select:focus {
+      border-color: #6a11cb;
+      box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.1);
+      outline: none;
     }
     
     .quantity-control {
@@ -388,141 +429,179 @@
       background: #6a11cb;
       color: white;
       border: none;
-      width: 30px;
-      height: 30px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       font-size: 1.2rem;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
+      transition: all 0.3s ease;
+    }
+    
+    .quantity-btn:hover {
+      background: #2575fc;
+      transform: scale(1.1);
     }
     
     .quantity-input {
-      width: 50px;
+      width: 60px;
       text-align: center;
-      padding: 5px;
+      padding: 8px;
       border: 1px solid #ddd;
-      border-radius: 5px;
+      border-radius: 8px;
       font-size: 1rem;
+      font-weight: 600;
     }
     
     .add-service-btn {
       background: #2575fc;
       color: white;
       border: none;
-      padding: 8px 15px;
-      border-radius: 20px;
+      padding: 10px 18px;
+      border-radius: 30px;
       cursor: pointer;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 15px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .add-service-btn:hover {
+      background: #6a11cb;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(37, 117, 252, 0.3);
+    }
+    
+    .remove-service-btn {
+      background: #ff6b6b;
+      color: white;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 0.85rem;
       display: flex;
       align-items: center;
       gap: 5px;
-      margin-top: 10px;
+      margin-top: 12px;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+    
+    .remove-service-btn:hover {
+      background: #ff5252;
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(255, 107, 107, 0.3);
     }
     
     .calculator-summary {
       background: #f8f9ff;
-      border-radius: 10px;
-      padding: 15px;
+      border-radius: 12px;
+      padding: 20px;
       margin-bottom: 20px;
     }
     
     .summary-item {
       display: flex;
       justify-content: space-between;
-      margin-bottom: 8px;
-      font-size: 0.95rem;
+      margin-bottom: 10px;
+      font-size: 1rem;
     }
     
     .summary-item.total {
-      font-weight: bold;
-      font-size: 1.1rem;
-      margin-top: 10px;
-      padding-top: 10px;
+      font-weight: 600;
+      font-size: 1.2rem;
+      margin-top: 15px;
+      padding-top: 15px;
       border-top: 1px dashed #ccc;
-    }
-    
-    .discount-badge {
-      background: #ff9a9e;
-      color: #d32f2f;
-      padding: 3px 8px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      font-weight: bold;
     }
     
     .first-order-discount {
       background: linear-gradient(135deg, #fff9c4 0%, #ffecb3 100%);
       border: 1px solid #ffd54f;
-      border-radius: 8px;
-      padding: 10px;
-      margin-bottom: 15px;
-      font-size: 0.9rem;
+      border-radius: 12px;
+      padding: 15px;
+      margin-bottom: 20px;
+      font-size: 0.95rem;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 10px;
     }
     
     .first-order-discount i {
       color: #f57c00;
-      font-size: 1.2rem;
+      font-size: 1.4rem;
     }
     
     .calculate-btn {
       background: linear-gradient(135deg, #6a11cb, #2575fc);
       color: white;
       border: none;
-      padding: 12px 20px;
+      padding: 14px 20px;
       border-radius: 30px;
       cursor: pointer;
-      font-size: 1rem;
-      font-weight: bold;
+      font-size: 1.05rem;
+      font-weight: 600;
       width: 100%;
-      box-shadow: 0 4px 10px rgba(106, 17, 203, 0.3);
+      box-shadow: 0 5px 15px rgba(106, 17, 203, 0.3);
       transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
     
     .calculate-btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(106, 17, 203, 0.4);
+      box-shadow: 0 8px 20px rgba(106, 17, 203, 0.4);
     }
     
     .invoice-btn {
       background: linear-gradient(135deg, #4CAF50, #2E7D32);
       color: white;
       border: none;
-      padding: 12px 20px;
+      padding: 14px 20px;
       border-radius: 30px;
       cursor: pointer;
-      font-size: 1rem;
-      font-weight: bold;
+      font-size: 1.05rem;
+      font-weight: 600;
       width: 100%;
-      box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+      box-shadow: 0 5px 15px rgba(76, 175, 80, 0.3);
       transition: all 0.3s ease;
-      margin-top: 10px;
+      margin-top: 12px;
       display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
     
     .whatsapp-btn {
       background: linear-gradient(135deg, #25D366, #128C7E);
       color: white;
       border: none;
-      padding: 12px 20px;
+      padding: 14px 20px;
       border-radius: 30px;
       cursor: pointer;
-      font-size: 1rem;
-      font-weight: bold;
+      font-size: 1.05rem;
+      font-weight: 600;
       width: 100%;
-      box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3);
+      box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
       transition: all 0.3s ease;
-      margin-top: 10px;
+      margin-top: 12px;
       display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
     }
     
     .invoice-btn:hover, .whatsapp-btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(76, 175, 80, 0.4);
+      box-shadow: 0 8px 20px rgba(76, 175, 80, 0.4);
     }
     
     .service-added {
@@ -532,6 +611,40 @@
     @keyframes highlight {
       0% { background-color: rgba(106, 17, 203, 0.1); }
       100% { background-color: transparent; }
+    }
+    
+    /* Floating WhatsApp Button */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 110px;
+      right: 30px;
+      background: linear-gradient(135deg, #25D366, #128C7E);
+      color: white;
+      border: none;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+      cursor: pointer;
+      z-index: 1000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      transition: all 0.3s ease;
+      animation: pulse-whatsapp 2s infinite;
+    }
+    
+    @keyframes pulse-whatsapp {
+      0% { transform: scale(1); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); }
+      50% { transform: scale(1.1); box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5); }
+      100% { transform: scale(1); box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4); }
+    }
+    
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.5);
+      animation: none;
     }
     
     @media (max-width: 768px) {
@@ -563,12 +676,54 @@
         left: 5%;
       }
       
-      .calculator-btn {
+      .calculator-btn, .whatsapp-float {
         bottom: 20px;
         right: 20px;
         width: 60px;
         height: 60px;
         font-size: 1.5rem;
+      }
+      
+      .whatsapp-float {
+        bottom: 90px;
+      }
+      
+      header {
+        padding: 40px 20px;
+        clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+      }
+      
+      footer {
+        clip-path: polygon(0 10%, 100% 0, 100% 100%, 0% 100%);
+      }
+    }
+    
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      .tagline {
+        font-size: 1rem;
+      }
+      
+      .highlight {
+        font-size: 0.9rem;
+        padding: 6px 15px;
+      }
+      
+      .category {
+        padding: 25px;
+      }
+      
+      .guarantee-item {
+        padding: 15px 20px;
+        font-size: 0.9rem;
+      }
+      
+      .contact-item {
+        padding: 8px 15px;
+        font-size: 0.9rem;
       }
     }
   </style>
@@ -576,29 +731,24 @@
 <body>
   <header>
     <div class="header-content">
-      <h1><i class="fas fa-crown"></i> Amjad Yaratıcı Hizmetler</h1>
-      <p class="tagline">Profesyonel tasarımlar, mantıklı fiyatlar</p>
+      <h1><i class="fas fa-palette"></i> Amjad Yaratıcı Hizmetler</h1>
+      <p class="tagline">Profesyonel tasarım çözümleri ile markanızı öne çıkarın</p>
       <div class="highlight">20+ mutlu müşteri | %100 memnuniyet garantili</div>
     </div>
   </header>
 
   <div class="container">
-    <div class="promo-banner">
-      <h3><i class="fas fa-gift"></i> Özel Fırsat!</h3>
-      <p>3 veya daha fazla hizmet sipariş eden müşterilerimiz için <span class="discount">%15 indirim</span> fırsatı! Teklif sınırlı sürelidir.</p>
-    </div>
-
     <div class="guarantee">
       <div class="guarantee-item">
-        <i class="fas fa-shipping-fast"></i>
+        <i class="fas fa-bolt"></i>
         <span>Hızlı Teslimat</span>
       </div>
       <div class="guarantee-item">
-        <i class="fas fa-sync-alt"></i>
+        <i class="fas fa-redo"></i>
         <span>Benzeri yapılır</span>
       </div>
       <div class="guarantee-item">
-        <i class="fas fa-lock"></i>
+        <i class="fas fa-shield-alt"></i>
         <span>Güvenli Ödeme</span>
       </div>
       <div class="guarantee-item">
@@ -610,7 +760,7 @@
     <div class="services-grid">
       <div class="category">
         <div class="category-icon">
-          <i class="fas fa-icons"></i>
+          <i class="fas fa-pencil-ruler"></i>
         </div>
         <h2>Logo Tasarımı</h2>
         <ul class="services-list">
@@ -660,7 +810,7 @@
 
       <div class="category">
         <div class="category-icon">
-          <i class="fas fa-video"></i>
+          <i class="fas fa-film"></i>
         </div>
         <h2>Video Kurgu & Montaj</h2>
         <ul class="services-list">
@@ -689,7 +839,7 @@
 
       <div class="category">
         <div class="category-icon">
-          <i class="fas fa-image"></i>
+          <i class="fas fa-ad"></i>
         </div>
         <h2>Grafik Tasarım & Pazarlama</h2>
         <ul class="services-list">
@@ -751,7 +901,7 @@
       
       <div class="category">
         <div class="category-icon">
-          <i class="fas fa-paint-brush"></i>
+          <i class="fas fa-layer-group"></i>
         </div>
         <h2>Diğer Hizmetler</h2>
         <ul class="services-list">
@@ -777,33 +927,38 @@
   </div>
 
   <footer>
-    <h3>Amjad Yaratıcı Hizmetler</h3>
+    <h3><i class="fas fa-palette"></i> Amjad Yaratıcı Hizmetler</h3>
     <p>Profesyonel çözümler için bize ulaşın</p>
     <div class="contact-info">
-      <div class="contact-item">
+      <a href="tel:+905385818771" class="contact-item">
         <i class="fas fa-phone"></i>
         <span>+90 538 581 87 71</span>
-      </div>
-      <div class="contact-item">
+      </a>
+      <a href="mailto:amjadhammad004@gmail.com" class="contact-item">
         <i class="fas fa-envelope"></i>
         <span>amjadhammad004@gmail.com</span>
-      </div>
-      <div class="contact-item">
+      </a>
+      <a href="https://instagram.com/amjadgg" target="_blank" class="contact-item">
         <i class="fab fa-instagram"></i>
         <span>@amjadgg</span>
-      </div>
-      <div class="contact-item">
+      </a>
+      <a href="https://wa.me/905385818771" target="_blank" class="contact-item">
         <i class="fab fa-whatsapp"></i>
         <span>+90 538 581 87 71</span>
-      </div>
+      </a>
     </div>
-    <p style="margin-top: 20px;">&copy; 2025 Amjad Yaratıcı Hizmetler. Tüm hakları saklıdır.</p>
+    <p style="margin-top: 20px; opacity: 0.8; font-size: 0.9rem;">&copy; 2025 Amjad Yaratıcı Hizmetler. Tüm hakları saklıdır.</p>
   </footer>
 
   <!-- Hesaplama Aracı Butonu -->
   <button class="calculator-btn" id="calculatorBtn">
     <i class="fas fa-calculator"></i>
   </button>
+  
+  <!-- WhatsApp Butonu -->
+  <a href="https://wa.me/905385818771" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
 
   <!-- Hesaplama Aracı Kutusu -->
   <div class="calculator-container" id="calculatorContainer">
@@ -855,21 +1010,13 @@
     document.addEventListener('DOMContentLoaded', function() {
       const categories = document.querySelectorAll('.category');
       
+      // Animate categories on load
       categories.forEach((category, index) => {
         setTimeout(() => {
           category.style.opacity = '1';
           category.style.transform = 'translateY(0)';
         }, 200 * index);
       });
-      
-      // Promosyon banner efekti
-      const promoBanner = document.querySelector('.promo-banner');
-      setInterval(() => {
-        promoBanner.style.transform = 'scale(1.02)';
-        setTimeout(() => {
-          promoBanner.style.transform = 'scale(1)';
-        }, 500);
-      }, 3000);
       
       // Hesaplama aracı fonksiyonları
       const calculatorBtn = document.getElementById('calculatorBtn');
@@ -923,7 +1070,7 @@
             <select class="service-select" name="service[]">
               <option value="">-- Servis seçin --</option>
               ${services.map(service => 
-                `<option value="${service.price}">${service.name} - ${service.price.toLocaleString()} TL</option>`
+                `<option value="${service.price}">${service.name} - ${service.price.toLocaleString('tr-TR')} TL</option>`
               ).join('')}
             </select>
             <div class="quantity-control">
@@ -956,7 +1103,7 @@
           <select class="service-select" name="service[]">
             <option value="">-- Servis seçin --</option>
             ${services.map(service => 
-              `<option value="${service.price}">${service.name} - ${service.price.toLocaleString()} TL</option>`
+              `<option value="${service.price}">${service.name} - ${service.price.toLocaleString('tr-TR')} TL</option>`
             ).join('')}
           </select>
           <div class="quantity-control">
@@ -964,7 +1111,7 @@
             <input type="number" class="quantity-input" value="1" min="1">
             <button class="quantity-btn plus" type="button">+</button>
           </div>
-          <button class="remove-service-btn" type="button" style="margin-top: 10px; background: #ff6b6b; color: white; border: none; padding: 5px 10px; border-radius: 15px; cursor: pointer;">
+          <button class="remove-service-btn" type="button">
             <i class="fas fa-trash"></i> Kaldır
           </button>
         `;
@@ -1070,12 +1217,12 @@
             <title>Amjad Hizmetler - Fatura</title>
             <style>
               body {
-                font-family: Arial, sans-serif;
+                font-family: 'Poppins', Arial, sans-serif;
                 line-height: 1.6;
                 color: #333;
                 max-width: 800px;
                 margin: 0 auto;
-                padding: 20px;
+                padding: 30px;
               }
               .invoice-header {
                 text-align: center;
@@ -1086,11 +1233,13 @@
               .invoice-header h1 {
                 color: #6a11cb;
                 margin-bottom: 10px;
+                font-size: 2.2rem;
               }
               .invoice-info {
                 display: flex;
                 justify-content: space-between;
                 margin-bottom: 30px;
+                flex-wrap: wrap;
               }
               .invoice-table {
                 width: 100%;
@@ -1099,7 +1248,7 @@
               }
               .invoice-table th, .invoice-table td {
                 border: 1px solid #ddd;
-                padding: 10px;
+                padding: 12px;
                 text-align: left;
               }
               .invoice-table th {
@@ -1107,7 +1256,7 @@
                 color: white;
               }
               .invoice-table tr:nth-child(even) {
-                background-color: #f2f2f2;
+                background-color: #f9f9f9;
               }
               .invoice-totals {
                 float: right;
@@ -1119,7 +1268,7 @@
                 border-collapse: collapse;
               }
               .invoice-totals td {
-                padding: 8px;
+                padding: 10px;
                 border: 1px solid #ddd;
               }
               .invoice-totals td:last-child {
@@ -1138,12 +1287,19 @@
                 color: #777;
                 border-top: 1px solid #ddd;
                 padding-top: 20px;
+                clear: both;
+              }
+              .logo {
+                font-size: 1.8rem;
+                margin-bottom: 10px;
+                color: #6a11cb;
               }
             </style>
           </head>
           <body>
             <div class="invoice-header">
-              <h1>AMJAD YARATICI HİZMETLER</h1>
+              <div class="logo"><i class="fas fa-palette"></i> AMJAD</div>
+              <h1>YARATICI HİZMETLER</h1>
               <p>Profesyonel Tasarım Çözümleri</p>
             </div>
             
@@ -1304,7 +1460,9 @@
       // Event listener'lar
       calculatorBtn.addEventListener('click', function() {
         calculatorContainer.classList.toggle('active');
-        createServiceOptions();
+        if (calculatorContainer.classList.contains('active')) {
+          createServiceOptions();
+        }
       });
       
       closeCalculator.addEventListener('click', function() {
