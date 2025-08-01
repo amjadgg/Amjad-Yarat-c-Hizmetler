@@ -2824,6 +2824,39 @@
   </div>
 
   <script>
+    // جعل الدوال متاحة فوراً
+    window.changeQuantity = function(button, change) {
+      try {
+        const quantityControl = button.closest('.quantity-control');
+        const input = quantityControl.querySelector('.quantity-input');
+        let currentValue = parseInt(input.value) || 1;
+        let newValue = currentValue + change;
+        
+        if (newValue < 1) {
+          newValue = 1;
+        }
+        
+        input.value = newValue;
+        if (typeof window.calculateTotal === 'function') {
+          window.calculateTotal();
+        }
+      } catch (error) {
+        console.error('خطأ في تغيير الكمية:', error);
+      }
+    };
+    
+    window.removeService = function(button) {
+      try {
+        const formGroup = button.closest('.form-group');
+        formGroup.remove();
+        if (typeof window.calculateTotal === 'function') {
+          window.calculateTotal();
+        }
+      } catch (error) {
+        console.error('خطأ في حذف الخدمة:', error);
+      }
+    };
+    
     document.addEventListener('DOMContentLoaded', function() {
       // Navigation functionality
       const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -3011,158 +3044,173 @@
       
       // Servis seçeneklerini oluştur
       function createServiceOptions() {
-        let html = '';
+        calculatorForm.innerHTML = '';
         
         // İlk servis seçimi için alan oluştur
-        html += `
-          <div class="form-group">
-            <label>Servis Seçin</label>
-            <select class="service-select" name="service[]">
-              <option value="">-- Servis seçin --</option>
-              ${services.map(service => 
-                `<option value="${service.price}">${service.name} - ${service.price.toLocaleString('tr-TR')} TL</option>`
-              ).join('')}
-            </select>
-            <div class="quantity-control">
-              <button class="quantity-btn minus" type="button">-</button>
-              <input type="number" class="quantity-input" value="1" min="1">
-              <button class="quantity-btn plus" type="button">+</button>
-            </div>
-          </div>
-        `;
-        
-        calculatorForm.innerHTML = html;
+        addServiceField();
         
         // Yeni servis ekleme butonu
         const addButton = document.createElement('button');
         addButton.className = 'add-service-btn';
+        addButton.type = 'button';
         addButton.innerHTML = '<i class="fas fa-plus"></i> Başka Servis Ekle';
-        addButton.onclick = addServiceField;
+        addButton.addEventListener('click', addServiceField);
         calculatorForm.appendChild(addButton);
-        
-        // Miktar butonlarına event listener ekle
-        addQuantityEventListeners();
       }
       
       // Yeni servis alanı ekle
       function addServiceField() {
+        const serviceCount = document.querySelectorAll('.form-group').length;
         const newService = document.createElement('div');
         newService.className = 'form-group';
+        
+        const serviceOptions = services.map(service => 
+          `<option value="${service.price}" data-name="${service.name}">${service.name} - ${service.price.toLocaleString('tr-TR')} TL</option>`
+        ).join('');
+        
         newService.innerHTML = `
           <label>Servis Seçin</label>
-          <select class="service-select" name="service[]">
+          <select class="service-select" onchange="calculateTotal()">
             <option value="">-- Servis seçin --</option>
-            ${services.map(service => 
-              `<option value="${service.price}">${service.name} - ${service.price.toLocaleString('tr-TR')} TL</option>`
-            ).join('')}
+            ${serviceOptions}
           </select>
           <div class="quantity-control">
-            <button class="quantity-btn minus" type="button">-</button>
-            <input type="number" class="quantity-input" value="1" min="1">
-            <button class="quantity-btn plus" type="button">+</button>
+            <button class="quantity-btn minus" type="button" onclick="changeQuantity(this, -1)">-</button>
+            <input type="number" class="quantity-input" value="1" min="1" onchange="calculateTotal()" oninput="calculateTotal()">
+            <button class="quantity-btn plus" type="button" onclick="changeQuantity(this, 1)">+</button>
           </div>
-          <button class="remove-service-btn" type="button">
-            <i class="fas fa-trash"></i> Kaldır
-          </button>
+          ${serviceCount > 0 ? '<button class="remove-service-btn" type="button" onclick="removeService(this)"><i class="fas fa-trash"></i> Kaldır</button>' : ''}
         `;
-        
-        // Kaldır butonuna event listener ekle
-        const removeBtn = newService.querySelector('.remove-service-btn');
-        removeBtn.addEventListener('click', function() {
-          newService.remove();
-        });
         
         // Ekle butonundan önce ekle
         const addButton = document.querySelector('.add-service-btn');
-        calculatorForm.insertBefore(newService, addButton);
-        
-        // Miktar butonlarına event listener ekle
-        addQuantityEventListeners(newService);
+        if (addButton) {
+          calculatorForm.insertBefore(newService, addButton);
+        } else {
+          calculatorForm.appendChild(newService);
+        }
       }
       
-      // Miktar kontrol butonları için event listener ekle
-      function addQuantityEventListeners(container = document) {
-        const minusBtns = container.querySelectorAll('.minus');
-        const plusBtns = container.querySelectorAll('.plus');
+      // مقدار تغيير دالة
+      function changeQuantity(button, change) {
+        const quantityControl = button.closest('.quantity-control');
+        const input = quantityControl.querySelector('.quantity-input');
+        let currentValue = parseInt(input.value) || 1;
+        let newValue = currentValue + change;
         
-        minusBtns.forEach(btn => {
-          btn.addEventListener('click', function() {
-            const input = this.nextElementSibling;
-            if (input.value > 1) {
-              input.value = parseInt(input.value) - 1;
-            }
-          });
-        });
-        
-        plusBtns.forEach(btn => {
-          btn.addEventListener('click', function() {
-            const input = this.previousElementSibling;
-            input.value = parseInt(input.value) + 1;
-          });
-        });
-      }
-      
-      // Hesaplama fonksiyonu
-      function calculateTotal() {
-        const serviceGroups = document.querySelectorAll('.form-group');
-        let subtotal = 0;
-        let selectedServices = [];
-        
-        serviceGroups.forEach(group => {
-          const select = group.querySelector('.service-select');
-          const quantityInput = group.querySelector('.quantity-input');
-          
-          if (select.value) {
-            const price = parseFloat(select.value);
-            const quantity = parseInt(quantityInput.value) || 1;
-            const total = price * quantity;
-            subtotal += total;
-            
-            selectedServices.push({
-              name: select.options[select.selectedIndex].text.split(' - ')[0],
-              price: price,
-              quantity: quantity,
-              total: total
-            });
-          }
-        });
-        
-        // İndirim hesapla (%15) - sadece aktifse
-        let discount = 0;
-        let total = subtotal;
-        
-        if (isDiscountActive) {
-          discount = subtotal * 0.15;
-          total = subtotal - discount;
+        if (newValue < 1) {
+          newValue = 1;
         }
         
-        // Sonuçları göster
-        document.getElementById('subtotal').textContent = subtotal.toLocaleString('tr-TR') + ' TL';
-        document.getElementById('discount').textContent = discount.toLocaleString('tr-TR') + ' TL';
-        document.getElementById('total').textContent = total.toLocaleString('tr-TR') + ' TL';
+        input.value = newValue;
+        calculateTotal();
+      }
+      
+      // خدمة حذف دالة
+      function removeService(button) {
+        const formGroup = button.closest('.form-group');
+        formGroup.remove();
+        calculateTotal();
+      }
+      
+      
+      // Hesaplama fonksiyonu
+      window.calculateTotal = function calculateTotal() {
+        try {
+          const serviceGroups = document.querySelectorAll('.form-group');
+          let subtotal = 0;
+          let selectedServices = [];
+          
+          serviceGroups.forEach(group => {
+            const select = group.querySelector('.service-select');
+            const quantityInput = group.querySelector('.quantity-input');
+            
+            if (select && select.value && quantityInput && quantityInput.value) {
+              const price = parseFloat(select.value) || 0;
+              const quantity = parseInt(quantityInput.value) || 0;
+              
+              if (price > 0 && quantity > 0) {
+                const itemTotal = price * quantity;
+                subtotal += itemTotal;
+                
+                const selectedOption = select.options[select.selectedIndex];
+                const serviceName = selectedOption.getAttribute('data-name') || selectedOption.text.split(' - ')[0];
+                
+                selectedServices.push({
+                  name: serviceName,
+                  price: price,
+                  quantity: quantity,
+                  total: itemTotal
+                });
+              }
+            }
+          });
+          
+          // İndirim hesapla (%15) - sadece aktifse
+          let discount = 0;
+          let total = subtotal;
+          
+          if (isDiscountActive && subtotal > 0) {
+            discount = Math.round(subtotal * 0.15);
+            total = subtotal - discount;
+          }
+          
+          // Sonuçları güncelle
+          updateCalculatorDisplay(subtotal, discount, total);
+          
+          // Butonları yönet ve verileri kaydet
+          manageCalculatorButtons(subtotal, selectedServices, discount, total);
+          
+        } catch (error) {
+          console.error('Hesaplama hatası:', error);
+        }
+      };
+      
+      // Hesaplayici görüntüsünü güncelle
+      function updateCalculatorDisplay(subtotal, discount, total) {
+        const subtotalEl = document.getElementById('subtotal');
+        const discountEl = document.getElementById('discount');
+        const totalEl = document.getElementById('total');
         
-        // Fatura ve WhatsApp butonlarını göster ve verileri sakla
+        if (subtotalEl) subtotalEl.textContent = subtotal.toLocaleString('tr-TR') + ' TL';
+        if (discountEl) discountEl.textContent = discount.toLocaleString('tr-TR') + ' TL';
+        if (totalEl) totalEl.textContent = total.toLocaleString('tr-TR') + ' TL';
+      }
+      
+      // Hesaplayici butonlarını yönet
+      function manageCalculatorButtons(subtotal, selectedServices, discount, total) {
         if (subtotal > 0) {
           invoiceBtn.style.display = 'flex';
           whatsappBtn.style.display = 'flex';
-          invoiceBtn.dataset.services = JSON.stringify(selectedServices);
-          invoiceBtn.dataset.subtotal = subtotal.toFixed(2);
-          invoiceBtn.dataset.discount = discount.toFixed(2);
-          invoiceBtn.dataset.total = total.toFixed(2);
-          invoiceBtn.dataset.hasDiscount = isDiscountActive;
+          
+          // Global değişkenlere kaydet
+          window.calculatorData = {
+            services: selectedServices,
+            subtotal: subtotal,
+            discount: discount,
+            total: total,
+            hasDiscount: isDiscountActive
+          };
         } else {
           invoiceBtn.style.display = 'none';
           whatsappBtn.style.display = 'none';
+          window.calculatorData = null;
         }
       }
       
       // Fatura oluşturma fonksiyonu
       function generateInvoice() {
-        const services = JSON.parse(invoiceBtn.dataset.services);
-        const subtotal = invoiceBtn.dataset.subtotal;
-        const discount = invoiceBtn.dataset.discount;
-        const total = invoiceBtn.dataset.total;
-        const hasDiscount = invoiceBtn.dataset.hasDiscount === 'true';
+        if (!window.calculatorData) {
+          alert('Önce hesaplama yapınız!');
+          return;
+        }
+        
+        const data = window.calculatorData;
+        const services = data.services;
+        const subtotal = data.subtotal;
+        const discount = data.discount;
+        const total = data.total;
+        const hasDiscount = data.hasDiscount;
         
         // İndirim kullanıldı olarak işaretle (sadece ilk kez)
         if (hasDiscount && !localStorage.getItem(DISCOUNT_KEY)) {
@@ -3375,11 +3423,17 @@
       
       // WhatsApp'ta gönder fonksiyonu
       function sendViaWhatsApp() {
-        const services = JSON.parse(invoiceBtn.dataset.services);
-        const subtotal = invoiceBtn.dataset.subtotal;
-        const discount = invoiceBtn.dataset.discount;
-        const total = invoiceBtn.dataset.total;
-        const hasDiscount = invoiceBtn.dataset.hasDiscount === 'true';
+        if (!window.calculatorData) {
+          alert('Önce hesaplama yapınız!');
+          return;
+        }
+        
+        const data = window.calculatorData;
+        const services = data.services;
+        const subtotal = data.subtotal;
+        const discount = data.discount;
+        const total = data.total;
+        const hasDiscount = data.hasDiscount;
         
         // İndirim kullanıldı olarak işaretle (sadece ilk kez)
         if (hasDiscount && !localStorage.getItem(DISCOUNT_KEY)) {
@@ -3479,6 +3533,8 @@
       calculateBtn.addEventListener('click', calculateTotal);
       invoiceBtn.addEventListener('click', generateInvoice);
       whatsappBtn.addEventListener('click', sendViaWhatsApp);
+      
+      // الدوال باتت متاحة عالمياً من بدشتها
       
       // Servis öğelerine tıklama eventi ekle
       document.querySelectorAll('.service-item').forEach(item => {
