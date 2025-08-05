@@ -1081,13 +1081,17 @@
     
     @media (max-width: 768px) {
       .portfolio-grid {
-        columns: 2;
+        columns: 1;
+        column-gap: 0;
+        margin-top: 30px;
       }
     }
     
     @media (max-width: 480px) {
       .portfolio-grid {
         columns: 1;
+        column-gap: 0;
+        margin-top: 20px;
       }
     }
     
@@ -1104,6 +1108,8 @@
       opacity: 0;
       transform: translateY(20px);
       cursor: pointer;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(20px);
     }
     
     .portfolio-item.animate {
@@ -1394,32 +1400,69 @@
         grid-template-columns: 1fr;
       }
       
+      .portfolio-section {
+        margin: 40px auto;
+        padding: 20px 15px;
+      }
+      
       .portfolio-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
+        column-gap: 0;
+        margin: 0;
       }
       
       .portfolio-item {
-        margin: 0 10px;
+        margin: 0 0 25px 0;
+        width: 100%;
+        max-width: 100%;
+        border-radius: 20px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      }
+      
+      .portfolio-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+      }
+      
+      .portfolio-media {
+        border-radius: 20px 20px 0 0;
+      }
+      
+      .portfolio-media img,
+      .portfolio-media video {
+        border-radius: 20px 20px 0 0;
+        width: 100%;
+        height: auto;
       }
       
       .section-title {
-        font-size: 2rem;
+        font-size: 2.2rem;
+        margin-bottom: 15px;
       }
       
       .section-subtitle {
-        font-size: 1rem;
-        margin-bottom: 30px;
+        font-size: 1.1rem;
+        margin-bottom: 35px;
+        padding: 0 10px;
       }
       
       .portfolio-filter {
-        gap: 10px;
-        margin-bottom: 30px;
+        gap: 8px;
+        margin-bottom: 25px;
+        padding: 0 10px;
+        justify-content: center;
+        flex-wrap: wrap;
+        max-width: 100%;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
       }
       
       .filter-btn {
-        padding: 8px 20px;
+        padding: 10px 18px;
         font-size: 0.9rem;
+        margin-bottom: 8px;
+        min-width: auto;
+        white-space: nowrap;
+        flex-shrink: 0;
       }
       
       h1 {
@@ -1441,9 +1484,102 @@
       }
       
       .calculator-container {
-        width: 90%;
-        right: 5%;
-        left: 5%;
+        width: 95%;
+        right: 2.5%;
+        left: 2.5%;
+        bottom: 80px;
+        max-height: 80vh;
+        overflow-y: auto;
+      }
+      
+      .calculator-form {
+        max-height: 50vh;
+        overflow-y: auto;
+      }
+      
+      .calculator-header {
+        padding: 15px;
+        margin-bottom: 15px;
+      }
+      
+      .calculator-header h3 {
+        font-size: 1.2rem;
+      }
+      
+      .form-group {
+        margin-bottom: 12px;
+        padding-bottom: 12px;
+      }
+      
+      .form-group label {
+        font-size: 0.9rem;
+        margin-bottom: 6px;
+      }
+      
+      .service-select {
+        padding: 10px;
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+      }
+      
+      .quantity-control {
+        gap: 8px;
+      }
+      
+      .quantity-btn {
+        width: 28px;
+        height: 28px;
+        font-size: 1rem;
+      }
+      
+      .quantity-input {
+        width: 50px;
+        padding: 6px;
+        font-size: 0.9rem;
+      }
+      
+      .add-service-btn {
+        padding: 8px 15px;
+        font-size: 0.9rem;
+        margin-top: 10px;
+      }
+      
+      .remove-service-btn {
+        padding: 6px 12px;
+        font-size: 0.8rem;
+        margin-top: 8px;
+      }
+      
+      .calculator-summary {
+        padding: 15px;
+        margin-bottom: 15px;
+      }
+      
+      .summary-item {
+        font-size: 0.9rem;
+        margin-bottom: 8px;
+      }
+      
+      .summary-item.total {
+        font-size: 1rem;
+        padding-top: 10px;
+        margin-top: 10px;
+      }
+      
+      .first-order-discount {
+        padding: 12px;
+        margin-bottom: 15px;
+        font-size: 0.85rem;
+      }
+      
+      .first-order-discount i {
+        font-size: 1.2rem;
+      }
+      
+      .calculate-btn, .invoice-btn, .whatsapp-btn {
+        padding: 12px 16px;
+        font-size: 0.95rem;
+        margin-top: 8px;
       }
       
       .calculator-btn, .whatsapp-float {
@@ -1507,6 +1643,174 @@
       .contact-item {
         padding: 8px 15px;
         font-size: 0.9rem;
+      }
+      
+      /* تحسينات البورتفوليو للهواتف الصغيرة */
+      .portfolio-section {
+        margin: 30px auto;
+        padding: 15px 10px;
+      }
+      
+      .portfolio-item {
+        margin: 0 0 20px 0;
+        border-radius: 15px;
+        box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+      }
+      
+      .portfolio-item:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(0,0,0,0.18);
+      }
+      
+      .portfolio-media {
+        border-radius: 15px 15px 0 0;
+      }
+      
+      .portfolio-media img,
+      .portfolio-media video {
+        border-radius: 15px 15px 0 0;
+      }
+      
+      .section-title {
+        font-size: 1.9rem;
+        margin-bottom: 12px;
+        padding: 0 5px;
+      }
+      
+      .section-subtitle {
+        font-size: 1rem;
+        margin-bottom: 25px;
+        padding: 0 5px;
+      }
+      
+      .portfolio-filter {
+        gap: 6px;
+        margin-bottom: 20px;
+        padding: 0 5px;
+      }
+      
+      .filter-btn {
+        padding: 8px 14px;
+        font-size: 0.85rem;
+        margin-bottom: 6px;
+      }
+      
+      .portfolio-title-overlay {
+        font-size: 1rem;
+        padding: 0 10px;
+      }
+      
+      /* حاسبة للشاشات الصغيرة جداً */
+      .calculator-container {
+        width: 98%;
+        right: 1%;
+        left: 1%;
+        bottom: 70px;
+        max-height: 85vh;
+        padding: 15px;
+      }
+      
+      .calculator-header {
+        padding: 10px;
+        margin-bottom: 10px;
+      }
+      
+      .calculator-header h3 {
+        font-size: 1.1rem;
+      }
+      
+      .close-calculator {
+        width: 25px;
+        height: 25px;
+        font-size: 1rem;
+      }
+      
+      .calculator-form {
+        max-height: 45vh;
+      }
+      
+      .form-group {
+        margin-bottom: 10px;
+        padding-bottom: 10px;
+      }
+      
+      .form-group label {
+        font-size: 0.85rem;
+        margin-bottom: 5px;
+      }
+      
+      .service-select {
+        padding: 8px;
+        font-size: 0.85rem;
+        margin-bottom: 6px;
+      }
+      
+      .quantity-btn {
+        width: 26px;
+        height: 26px;
+        font-size: 0.9rem;
+      }
+      
+      .quantity-input {
+        width: 45px;
+        padding: 5px;
+        font-size: 0.85rem;
+      }
+      
+      .add-service-btn {
+        padding: 6px 12px;
+        font-size: 0.85rem;
+        margin-top: 8px;
+      }
+      
+      .remove-service-btn {
+        padding: 5px 10px;
+        font-size: 0.75rem;
+        margin-top: 6px;
+      }
+      
+      .calculator-summary {
+        padding: 12px;
+        margin-bottom: 12px;
+      }
+      
+      .summary-item {
+        font-size: 0.85rem;
+        margin-bottom: 6px;
+      }
+      
+      .summary-item.total {
+        font-size: 0.95rem;
+        padding-top: 8px;
+        margin-top: 8px;
+      }
+      
+      .first-order-discount {
+        padding: 10px;
+        margin-bottom: 12px;
+        font-size: 0.8rem;
+      }
+      
+      .first-order-discount i {
+        font-size: 1.1rem;
+      }
+      
+      .calculate-btn, .invoice-btn, .whatsapp-btn {
+        padding: 10px 14px;
+        font-size: 0.9rem;
+        margin-top: 6px;
+      }
+      
+      .calculator-btn, .whatsapp-float {
+        width: 55px;
+        height: 55px;
+        font-size: 1.3rem;
+        bottom: 15px;
+        right: 15px;
+      }
+      
+      .whatsapp-float {
+        bottom: 75px;
       }
     }
     
@@ -2538,22 +2842,22 @@
         </div>
         <h2>Logo Tasarımı</h2>
         <ul class="services-list">
-          <li class="service-item" data-name="Basit Logo (Temel)" data-price="3200">
-            <span class="service-name">Basit Logo (Temel)</span>
-            <span class="service-price">3,200 TL</span>
-          </li>
-          <li class="service-item" data-name="Profesyonel Logo (3 seçenek)" data-price="4800">
-            <span class="service-name">Profesyonel Logo (3 seçenek)</span>
-            <span class="service-price">4,800 TL</span>
-          </li>
-          <li class="service-item" data-name="Kurumsal Kimlik (Logo + renkler + fontlar)" data-price="7200">
-            <span class="service-name">Kurumsal Kimlik (Logo + renkler + fontlar)</span>
-            <span class="service-price">7,200 TL</span>
-          </li>
-          <li class="service-item" data-name="Mevcut logoda değişiklik" data-price="2400">
-            <span class="service-name">Mevcut logoda değişiklik</span>
-            <span class="service-price">2,400 TL</span>
-          </li>
+<li class="service-item" data-name="Basit Logo (Temel)" data-price="2800">
+<span class="service-name">Basit Logo (Temel)</span>
+<span class="service-price">2,800 TL</span>
+</li>
+<li class="service-item" data-name="Profesyonel Logo (3 seçenek)" data-price="4200">
+<span class="service-name">Profesyonel Logo (3 seçenek)</span>
+<span class="service-price">4,200 TL</span>
+</li>
+<li class="service-item" data-name="Kurumsal Kimlik (Logo + renkler + fontlar)" data-price="6400">
+<span class="service-name">Kurumsal Kimlik (Logo + renkler + fontlar)</span>
+<span class="service-price">6,400 TL</span>
+</li>
+<li class="service-item" data-name="Mevcut logoda değişiklik" data-price="2000">
+<span class="service-name">Mevcut logoda değişiklik</span>
+<span class="service-price">2,000 TL</span>
+</li>
         </ul>
       </div>
 
@@ -2563,22 +2867,22 @@
         </div>
         <h2>Ambalaj Tasarımı</h2>
         <ul class="services-list">
-          <li class="service-item" data-name="Tek yüzey ambalaj tasarımı (1-2 yüz)" data-price="2400">
-            <span class="service-name">Tek yüzey ambalaj tasarımı (1-2 yüz)</span>
-            <span class="service-price">2,400 TL</span>
-          </li>
-          <li class="service-item" data-name="Çok yüzeyli ambalaj tasarımı (1-5 yüz)" data-price="3200">
-            <span class="service-name">Çok yüzeyli ambalaj tasarımı (1-5 yüz)</span>
-            <span class="service-price">3,200 TL</span>
-          </li>
-          <li class="service-item" data-name="Ürün etiketi tasarımı" data-price="960">
-            <span class="service-name">Ürün etiketi tasarımı</span>
-            <span class="service-price">960 TL</span>
-          </li>
-          <li class="service-item" data-name="Premium hediye kutusu tasarımı" data-price="6800">
-            <span class="service-name">Premium hediye kutusu tasarımı</span>
-            <span class="service-price">6,800 TL</span>
-          </li>
+<li class="service-item" data-name="Tek yüzey ambalaj tasarımı (1-2 yüz)" data-price="2000">
+<span class="service-name">Tek yüzey ambalaj tasarımı (1-2 yüz)</span>
+<span class="service-price">2,000 TL</span>
+</li>
+<li class="service-item" data-name="Çok yüzeyli ambalaj tasarımı (1-5 yüz)" data-price="2800">
+<span class="service-name">Çok yüzeyli ambalaj tasarımı (1-5 yüz)</span>
+<span class="service-price">2,800 TL</span>
+</li>
+<li class="service-item" data-name="Ürün etiketi tasarımı" data-price="800">
+<span class="service-name">Ürün etiketi tasarımı</span>
+<span class="service-price">800 TL</span>
+</li>
+<li class="service-item" data-name="Premium hediye kutusu tasarımı" data-price="5800">
+<span class="service-name">Premium hediye kutusu tasarımı</span>
+<span class="service-price">5,800 TL</span>
+</li>
         </ul>
       </div>
 
@@ -2588,26 +2892,26 @@
         </div>
         <h2>Video Kurgu & Montaj</h2>
         <ul class="services-list">
-          <li class="service-item" data-name="Temel video montaj (saatlik)" data-price="4800">
-            <span class="service-name">Temel video montaj (saatlik)</span>
-            <span class="service-price">4,800 TL</span>
-          </li>
-          <li class="service-item" data-name="After Effects animasyon (saatlik)" data-price="8800">
-            <span class="service-name">After Effects animasyon (saatlik)</span>
-            <span class="service-price">8,800 TL</span>
-          </li>
-          <li class="service-item" data-name="Reklam videosu (30-60 saniye)" data-price="6800">
-            <span class="service-name">Reklam videosu (30-60 saniye)</span>
-            <span class="service-price">6,800 TL</span>
-          </li>
-          <li class="service-item" data-name="Kapsamlı tanıtım videosu (2-3 dakika)" data-price="14400">
-            <span class="service-name">Kapsamlı tanıtım videosu (2-3 dakika)</span>
-            <span class="service-price">14,400 TL</span>
-          </li>
-          <li class="service-item" data-name="AI ile fotoğraftan video oluşturma (başına)" data-price="1200">
-            <span class="service-name">AI ile fotoğraftan video oluşturma (başına)</span>
-            <span class="service-price">1,200 TL</span>
-          </li>
+<li class="service-item" data-name="Temel video montaj (saatlik)" data-price="4000">
+<span class="service-name">Temel video montaj (saatlik)</span>
+<span class="service-price">4,000 TL</span>
+</li>
+<li class="service-item" data-name="After Effects animasyon (saatlik)" data-price="7500">
+<span class="service-name">After Effects animasyon (saatlik)</span>
+<span class="service-price">7,500 TL</span>
+</li>
+<li class="service-item" data-name="Reklam videosu (30-60 saniye)" data-price="5800">
+<span class="service-name">Reklam videosu (30-60 saniye)</span>
+<span class="service-price">5,800 TL</span>
+</li>
+<li class="service-item" data-name="Kapsamlı tanıtım videosu (2-3 dakika)" data-price="12000">
+<span class="service-name">Kapsamlı tanıtım videosu (2-3 dakika)</span>
+<span class="service-price">12,000 TL</span>
+</li>
+<li class="service-item" data-name="AI ile fotoğraftan video oluşturma (başına)" data-price="1000">
+<span class="service-name">AI ile fotoğraftan video oluşturma (başına)</span>
+<span class="service-price">1,000 TL</span>
+</li>
         </ul>
       </div>
 
@@ -2617,26 +2921,26 @@
         </div>
         <h2>Grafik Tasarım & Pazarlama</h2>
         <ul class="services-list">
-          <li class="service-item" data-name="Sosyal medya posteri (tek)" data-price="320">
-            <span class="service-name">Sosyal medya posteri (tek)</span>
-            <span class="service-price">320 TL</span>
-          </li>
-          <li class="service-item" data-name="5'li sosyal medya posteri paketi" data-price="1500">
-            <span class="service-name">5'li sosyal medya posteri paketi</span>
-            <span class="service-price">1,500 TL</span>
-          </li>
-          <li class="service-item" data-name="20'li sosyal medya posteri paketi" data-price="4800">
-            <span class="service-name">20'li sosyal medya posteri paketi</span>
-            <span class="service-price">4,800 TL</span>
-          </li>
-          <li class="service-item" data-name="Kartvizit tasarımı" data-price="1200">
-            <span class="service-name">Kartvizit tasarımı</span>
-            <span class="service-price">1,200 TL</span>
-          </li>
-          <li class="service-item" data-name="Broşür tasarımı (tek yüz)" data-price="2400">
-            <span class="service-name">Broşür tasarımı (tek yüz)</span>
-            <span class="service-price">2,400 TL</span>
-          </li>
+<li class="service-item" data-name="Sosyal medya posteri (tek)" data-price="280">
+<span class="service-name">Sosyal medya posteri (tek)</span>
+<span class="service-price">280 TL</span>
+</li>
+<li class="service-item" data-name="5'li sosyal medya posteri paketi" data-price="1200">
+<span class="service-name">5'li sosyal medya posteri paketi</span>
+<span class="service-price">1,200 TL</span>
+</li>
+<li class="service-item" data-name="20'li sosyal medya posteri paketi" data-price="4000">
+<span class="service-name">20'li sosyal medya posteri paketi</span>
+<span class="service-price">4,000 TL</span>
+</li>
+<li class="service-item" data-name="Kartvizit tasarımı" data-price="1000">
+<span class="service-name">Kartvizit tasarımı</span>
+<span class="service-price">1,000 TL</span>
+</li>
+<li class="service-item" data-name="Broşür tasarımı (tek yüz)" data-price="2000">
+<span class="service-name">Broşür tasarımı (tek yüz)</span>
+<span class="service-price">2,000 TL</span>
+</li>
         </ul>
       </div>
       
@@ -2646,30 +2950,30 @@
         </div>
         <h2>Fotoğraf Düzenleme</h2>
         <ul class="services-list">
-          <li class="service-item" data-name="Temel renk düzeltme (fotoğraf başı)" data-price="240">
-            <span class="service-name">Temel renk düzeltme (fotoğraf başı)</span>
-            <span class="service-price">240 TL</span>
-          </li>
-          <li class="service-item" data-name="Arka plan değiştirme (fotoğraf başı)" data-price="480">
-            <span class="service-name">Arka plan değiştirme (fotoğraf başı)</span>
-            <span class="service-price">480 TL</span>
-          </li>
-          <li class="service-item" data-name="Portre düzeltme (cilt, göz, vs.)" data-price="720">
-            <span class="service-name">Portre düzeltme (cilt, göz, vs.)</span>
-            <span class="service-price">720 TL</span>
-          </li>
-          <li class="service-item" data-name="Ürün fotoğrafı düzenleme" data-price="400">
-            <span class="service-name">Ürün fotoğrafı düzenleme</span>
-            <span class="service-price">400 TL</span>
-          </li>
-          <li class="service-item" data-name="10 fotoğraflik paket" data-price="3200">
-            <span class="service-name">10 fotoğraflik paket</span>
-            <span class="service-price">3,200 TL</span>
-          </li>
-          <li class="service-item" data-name="20 fotoğraflik paket" data-price="5600">
-            <span class="service-name">20 fotoğraflik paket</span>
-            <span class="service-price">5,600 TL</span>
-          </li>
+<li class="service-item" data-name="Temel renk düzeltme (fotoğraf başı)" data-price="200">
+<span class="service-name">Temel renk düzeltme (fotoğraf başı)</span>
+<span class="service-price">200 TL</span>
+</li>
+<li class="service-item" data-name="Arka plan değiştirme (fotoğraf başı)" data-price="400">
+<span class="service-name">Arka plan değiştirme (fotoğraf başı)</span>
+<span class="service-price">400 TL</span>
+</li>
+<li class="service-item" data-name="Portre düzeltme (cilt, göz, vs.)" data-price="600">
+<span class="service-name">Portre düzeltme (cilt, göz, vs.)</span>
+<span class="service-price">600 TL</span>
+</li>
+<li class="service-item" data-name="Ürün fotoğrafı düzenleme" data-price="350">
+<span class="service-name">Ürün fotoğrafı düzenleme</span>
+<span class="service-price">350 TL</span>
+</li>
+<li class="service-item" data-name="10 fotoğraflik paket" data-price="2800">
+<span class="service-name">10 fotoğraflık paket</span>
+<span class="service-price">2,800 TL</span>
+</li>
+<li class="service-item" data-name="20 fotoğraflik paket" data-price="5000">
+<span class="service-name">20 fotoğraflık paket</span>
+<span class="service-price">5,000 TL</span>
+</li>
         </ul>
       </div>
       
@@ -2679,22 +2983,22 @@
         </div>
         <h2>Diğer Hizmetler</h2>
         <ul class="services-list">
-          <li class="service-item" data-name="Web site arayüz tasarımı" data-price="9600">
-            <span class="service-name">Web site arayüz tasarımı</span>
-            <span class="service-price">9,600 TL</span>
-          </li>
-          <li class="service-item" data-name="Sosyal medya kapak fotoğrafı" data-price="640">
-            <span class="service-name">Sosyal medya kapak fotoğrafı</span>
-            <span class="service-price">640 TL</span>
-          </li>
-          <li class="service-item" data-name="Mobil uygulama arayüzü" data-price="14400">
-            <span class="service-name">Mobil uygulama arayüzü</span>
-            <span class="service-price">14,400 TL</span>
-          </li>
-          <li class="service-item" data-name="Karikatür çizimi" data-price="1200">
-            <span class="service-name">Karikatür çizimi</span>
-            <span class="service-price">1,200 TL</span>
-          </li>
+<li class="service-item" data-name="Web site arayüz tasarımı" data-price="8000">
+<span class="service-name">Web site arayüz tasarımı</span>
+<span class="service-price">8,000 TL</span>
+</li>
+<li class="service-item" data-name="Sosyal medya kapak fotoğrafı" data-price="550">
+<span class="service-name">Sosyal medya kapak fotoğrafı</span>
+<span class="service-price">550 TL</span>
+</li>
+<li class="service-item" data-name="Mobil uygulama arayüzü" data-price="12000">
+<span class="service-name">Mobil uygulama arayüzü</span>
+<span class="service-price">12,000 TL</span>
+</li>
+<li class="service-item" data-name="Karikatür çizimi" data-price="1000">
+<span class="service-name">Karikatür çizimi</span>
+<span class="service-price">1,000 TL</span>
+</li>
         </ul>
       </div>
     </div>
@@ -3025,34 +3329,34 @@
       
       // Servis fiyat listesi
       const services = [
-        { name: "Basit Logo (Temel)", price: 3200 },
-        { name: "Profesyonel Logo (3 seçenek)", price: 4800 },
-        { name: "Kurumsal Kimlik (Logo + renkler + fontlar)", price: 7200 },
-        { name: "Mevcut logoda değişiklik", price: 2400 },
-        { name: "Tek yüzey ambalaj tasarımı (1-2 yüz)", price: 2400 },
-        { name: "Çok yüzeyli ambalaj tasarımı (1-5 yüz)", price: 3200 },
-        { name: "Ürün etiketi tasarımı", price: 960 },
-        { name: "Premium hediye kutusu tasarımı", price: 6800 },
-        { name: "Temel video montaj (saatlik)", price: 4800 },
-        { name: "After Effects animasyon (saatlik)", price: 8800 },
-        { name: "Reklam videosu (30-60 saniye)", price: 6800 },
-        { name: "Kapsamlı tanıtım videosu (2-3 dakika)", price: 14400 },
-        { name: "AI ile fotoğraftan video oluşturma (başına)", price: 1200 },
-        { name: "Sosyal medya posteri (tek)", price: 320 },
-        { name: "5'li sosyal medya posteri paketi", price: 1500 },
-        { name: "20'li sosyal medya posteri paketi", price: 4800 },
-        { name: "Kartvizit tasarımı", price: 1200 },
-        { name: "Broşür tasarımı (tek yüz)", price: 2400 },
-        { name: "Temel renk düzeltme (fotoğraf başı)", price: 240 },
-        { name: "Arka plan değiştirme (fotoğraf başı)", price: 480 },
-        { name: "Portre düzeltme (cilt, göz, vs.)", price: 720 },
-        { name: "Ürün fotoğrafı düzenleme", price: 400 },
-        { name: "10 fotoğraflik paket", price: 3200 },
-        { name: "20 fotoğraflik paket", price: 5600 },
-        { name: "Web site arayüz tasarımı", price: 9600 },
-        { name: "Sosyal medya kapak fotoğrafı", price: 640 },
-        { name: "Mobil uygulama arayüzü", price: 14400 },
-        { name: "Karikatür çizimi", price: 1200 }
+        { name: "Basit Logo (Temel)", price: 2800 },
+        { name: "Profesyonel Logo (3 seçenek)", price: 4200 },
+        { name: "Kurumsal Kimlik (Logo + renkler + fontlar)", price: 6400 },
+        { name: "Mevcut logoda değişiklik", price: 2000 },
+        { name: "Tek yüzey ambalaj tasarımı (1-2 yüz)", price: 2000 },
+        { name: "Çok yüzeyli ambalaj tasarımı (1-5 yüz)", price: 2800 },
+        { name: "Ürün etiketi tasarımı", price: 800 },
+        { name: "Premium hediye kutusu tasarımı", price: 5800 },
+        { name: "Temel video montaj (saatlik)", price: 4000 },
+        { name: "After Effects animasyon (saatlik)", price: 7500 },
+        { name: "Reklam videosu (30-60 saniye)", price: 5800 },
+        { name: "Kapsamlı tanıtım videosu (2-3 dakika)", price: 12000 },
+        { name: "AI ile fotoğraftan video oluşturma (başına)", price: 1000 },
+        { name: "Sosyal medya posteri (tek)", price: 280 },
+        { name: "5'li sosyal medya posteri paketi", price: 1200 },
+        { name: "20'li sosyal medya posteri paketi", price: 4000 },
+        { name: "Kartvizit tasarımı", price: 1000 },
+        { name: "Broşür tasarımı (tek yüz)", price: 2000 },
+        { name: "Temel renk düzeltme (fotoğraf başı)", price: 200 },
+        { name: "Arka plan değiştirme (fotoğraf başı)", price: 400 },
+        { name: "Portre düzeltme (cilt, göz, vs.)", price: 600 },
+        { name: "Ürün fotoğrafı düzenleme", price: 350 },
+        { name: "10 fotoğraflik paket", price: 2800 },
+        { name: "20 fotoğraflik paket", price: 5000 },
+        { name: "Web site arayüz tasarımı", price: 8000 },
+        { name: "Sosyal medya kapak fotoğrafı", price: 550 },
+        { name: "Mobil uygulama arayüzü", price: 12000 },
+        { name: "Karikatür çizimi", price: 1000 }
       ];
       
       // Servis seçeneklerini oluştur
